@@ -53,8 +53,19 @@ Trimmomatic is a commonly utilized tool for QC/trimming short reads and has been
 FastQC
 ------
 
-Text
+FastQC is an application that can be utilized to assess sequence data. It's worth looking at the reads after trimming/before aligning to the genome and after aligning to the genome.
 
+1. FastQC can be downloaded `here <http://www.bioinformatics.babraham.ac.uk/projects/fastqc/>`_.
+
+2. The software is well documented and quite powerful. Every statistic/assessment that it draws can be found in the `FastQC documentation <http://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/>`_. Further, you can watch a `tutorial video <https://www.youtube.com/watch?v=bz93ReOv87Y>`_ and view examples of `good Illumina data <http://www.bioinformatics.babraham.ac.uk/projects/fastqc/good_sequence_short_fastqc.html>`_ and `bad Illumina data <http://www.bioinformatics.babraham.ac.uk/projects/fastqc/bad_sequence_fastqc.html>`_.
+
+3. The file will end up in your downloads folder. If you are a **Windows user**, double click on the **run_fastqc bat file**. If you are a **Mac** user, double click on the **fastqc_vX.XX.X.dmg** file to run the application.
+
+.. note:: FastQC runs on Java. Go `here <http://www.java.com/en/>`_ and click on "Download" and download the latest version of Java for your computer. **FastQC will not run unless you have Java installed**.
+
+4. Please attempt to open the software to make sure that everything will at least open and run.
+
+5. Congratulations! You've installed another piece of software for this module.
 
 .. _r:
 
