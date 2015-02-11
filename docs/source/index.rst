@@ -1,4 +1,4 @@
-Welcome to the MMG 464 RNA-seq tutorial
+Welcome to the MMG 434 RNA-seq tutorial
 =======================================
 
 Contents:
