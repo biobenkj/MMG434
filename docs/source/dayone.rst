@@ -24,11 +24,11 @@ Trimmomatic
 
 Trimmomatic is a commonly utilized tool for QC/trimming short reads and has been implemented in RNA-seq approaches in the literature and is the go to tool at the MSU sequencing facility (RTSF).
 
-#. Trimmomatic can be downloaded from `here <http://www.usadellab.org/cms/index.php?page=trimmomatic>`_.
+1. Trimmomatic can be downloaded from `here <http://www.usadellab.org/cms/index.php?page=trimmomatic>`_.
 
-#. Scroll down the page (which you can read at your leisure later if you are interested) to where it says "Download Trimmomatic"
+2. Scroll down the page (which you can read at your leisure later if you are interested) to where it says "Download Trimmomatic"
 
-#. Click on the link that says "binary"
+3. Click on the link that says "binary"
 
 .. image:: trimbinary.jpg
 	:width: 400px
@@ -36,18 +36,17 @@ Trimmomatic is a commonly utilized tool for QC/trimming short reads and has been
 	:height: 300px
 	:alt: image showing area where to download the binary file for Trimmomatic
 	
-#. The file will end up in your downloads folder and will likely need to be unzipped as it is compressed. This can typically be accomplished just by double clicking on the file itself in your downloads folder.
+4. The file will end up in your downloads folder and will likely need to be unzipped as it is compressed. This can typically be accomplished just by double clicking on the file itself in your downloads folder.
 
-#. Once this is done, move the folder to your desktop.
-
-
-#. Open the Trimmomatic folder on your desktop and navigate to the folder called **adapters**.
-
-#. Drag and drop the file **TruSeq3-SE.fa** out of the adapters subfolder and into the main **Trimmomatic** folder. The list of files in the main folder will likely be: an adapters folder, LICENSE, trimmomatic-0.32.jar, and TruSeq3-SE.fa.
-
-#. You should be all set for installing this software!
+5. Once this is done, move the folder to your desktop.
 
 .. note:: Trimmomatic runs on Java. Go `here <http://www.java.com/en/>`_ and click on "Download" and download the latest version of Java for your computer. **Trimmomatic will not run unless you have Java installed**.
+
+6. Open the Trimmomatic folder on your desktop and navigate to the folder called **adapters**.
+
+7. Drag and drop the file **TruSeq3-SE.fa** out of the adapters subfolder and into the main **Trimmomatic** folder. The list of files in the main folder will like be: an adapters folder, LICENSE, trimmomatic-0.32.jar, and TruSeq3-SE.fa.
+
+8. You should be all set for installing this software!
 
 .. _fastqc:
 
