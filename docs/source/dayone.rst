@@ -8,10 +8,42 @@ Before moving forward to mapping reads to the genome, it is necessary to QC the 
 Software to install:
 --------------------
 
-#. Trimmomatic
+#. :ref:`trimmomatic`
 
-#. FastQC
+#. :ref:`fastqc`
 
-#. R
+#. :ref:`r`
 
-#. RStudio
+#. :ref:`rstudio`
+
+
+.._trimmomatic:
+
+Trimmomatic:
+============
+
+Text
+
+
+.._fastqc
+
+FastQC:
+=======
+
+Text
+
+
+.._r:
+
+R
+=
+
+Text
+
+
+.._rstudio:
+
+RStudio:
+========
+
+Text
