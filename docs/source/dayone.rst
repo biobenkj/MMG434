@@ -40,13 +40,14 @@ Trimmomatic is a commonly utilized tool for QC/trimming short reads and has been
 
 #. Once this is done, move the folder to your desktop.
 
-.. note:: Trimmomatic runs on Java. Go `here <http://www.java.com/en/>`_ and click on "Download" and download the latest version of Java for your computer. **Trimmomatic will not run unless you have Java installed**.
 
 #. Open the Trimmomatic folder on your desktop and navigate to the folder called **adapters**.
 
-#. Drag and drop the file **TruSeq3-SE.fa** out of the adapters subfolder and into the main **Trimmomatic** folder. The list of files in the main folder will like be: an adapters folder, LICENSE, trimmomatic-0.32.jar, and TruSeq3-SE.fa.
+#. Drag and drop the file **TruSeq3-SE.fa** out of the adapters subfolder and into the main **Trimmomatic** folder. The list of files in the main folder will likely be: an adapters folder, LICENSE, trimmomatic-0.32.jar, and TruSeq3-SE.fa.
 
 #. You should be all set for installing this software!
+
+.. note:: Trimmomatic runs on Java. Go `here <http://www.java.com/en/>`_ and click on "Download" and download the latest version of Java for your computer. **Trimmomatic will not run unless you have Java installed**.
 
 .. _fastqc:
 
