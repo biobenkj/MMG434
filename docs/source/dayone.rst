@@ -17,7 +17,7 @@ Software to install:
 #. :ref:`rstudio`
 
 
-.._trimmomatic:
+.. _trimmomatic:
 
 Trimmomatic:
 ============
@@ -25,7 +25,7 @@ Trimmomatic:
 Text
 
 
-.._fastqc
+.. _fastqc
 
 FastQC:
 =======
@@ -33,7 +33,7 @@ FastQC:
 Text
 
 
-.._r:
+.. _r:
 
 R
 =
@@ -41,7 +41,7 @@ R
 Text
 
 
-.._rstudio:
+.. _rstudio:
 
 RStudio:
 ========
