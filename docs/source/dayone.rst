@@ -24,16 +24,17 @@ Trimmomatic
 
 Trimmomatic is a commonly utilized tool for QC/trimming short reads and has been implemented in RNA-seq approaches in the literature and is the go to tool at the MSU sequencing facility (RTSF).
 
-Trimmomatic can be downloaded from `here <http://www.usadellab.org/cms/index.php?page=trimmomatic>`.
+Trimmomatic can be downloaded from `here <http://www.usadellab.org/cms/index.php?page=trimmomatic>`_.
 
 Scroll down the page (which you can read at your leisure later if you are interested) to where it says "Download Trimmomatic"
 
 Click on the link that says "binary"
 
-.. image:: trimbinary.tiff
+.. image:: trimbinary.jpg
 	:width: 400px
 	:align: center
 	:height: 300px
+	:alt: image showing area where to download the binary file for Trimmomatic
 
 .. _fastqc:
 
