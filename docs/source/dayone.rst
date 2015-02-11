@@ -19,16 +19,16 @@ Software to install:
 
 .. _trimmomatic:
 
-Trimmomatic:
-============
+Trimmomatic
+===========
 
 Text
 
 
-.. _fastqc
+.. _fastqc:
 
-FastQC:
-=======
+FastQC
+======
 
 Text
 
@@ -43,7 +43,7 @@ Text
 
 .. _rstudio:
 
-RStudio:
-========
+RStudio
+=======
 
 Text
