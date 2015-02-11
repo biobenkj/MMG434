@@ -16,6 +16,8 @@ Software to install:
 
 #. :ref:`rstudio`
 
+#. :ref:`qualimap`
+
 
 .. _trimmomatic:
 
@@ -53,7 +55,7 @@ Trimmomatic is a commonly utilized tool for QC/trimming short reads and has been
 FastQC
 ------
 
-FastQC is an application that can be utilized to assess sequence data. It's worth looking at the reads after trimming/before aligning to the genome and after aligning to the genome.
+FastQC is an application that can be utilized to assess sequence data. It's worth looking at the reads after trimming/before aligning to the genome.
 
 1. FastQC can be downloaded `here <http://www.bioinformatics.babraham.ac.uk/projects/fastqc/>`_.
 
@@ -135,4 +137,43 @@ RStudio is a fantastic interface to work in R. R does have a graphical user inte
 	
 3. Double click the file after the software has finished downloading and follow the instructions to install the software.
 
-4. That's it! You're done!
+4. That's it!
+
+.. _qualimap:
+
+Qualimap
+--------
+
+The last piece of software that is nice to have is a software suite that works with Java and R to generate PDF documents summarizing the data post-alignment to the genome.
+
+1. Qualimap can be downloaded `here <http://qualimap.bioinfo.cipf.es/>`_.
+
+2. Click on the .zip file (as seen below)
+
+.. image:: qualimapdownload.jpg
+	:align: center
+	:alt: Qualimap download
+	
+3. The file will end up in your downloads folder and will likely need to be unzipped as it is compressed. This can typically be accomplished just by double clicking on the file itself in your downloads folder.
+
+4. Once this is done, move the folder to your desktop.
+
+5. Before we can run this software suite, we will need to install a few packages in R: optparse (from CRAN), NOISeq, Repitools, Rsamtools, GenomicFeatures, rtracklayer (all available from Bioconductor).
+
+6. To do this, open RStudio, and click on the **packages** tab and then the **Install** button.
+
+.. image:: RStudioinstallpackages.jpg
+	:align: center
+	:alt: Install new packages in RStudio
+	
+7. Type **optparse** into the **Packages (separate multiple with space or comma):** field. Then click **Install**. RStudio should do the rest.
+
+8. To install the packages from Bioconductor, click next to the **>** cursor. Type **source("http://bioconductor.org/biocLite.R")** and hit Enter/Return.
+
+.. image:: biocinstaller.jpg
+	:align: center
+	:alt: BiocLite installer
+
+9. Then type **biocLite("NOISeq")** and hit Enter/Return. Repeat for Repitools, Rsamtools, GenomicFeatures, and rtracklayer.
+
+10. That's all the software we need to install for now!
