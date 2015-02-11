@@ -64,21 +64,71 @@
 <div class="section" id="trimmomatic">
 <span id="id1"></span><h2>Trimmomatic<a class="headerlink" href="#trimmomatic" title="Permalink to this headline">¶</a></h2>
 <p>Trimmomatic is a commonly utilized tool for QC/trimming short reads and has been implemented in RNA-seq approaches in the literature and is the go to tool at the MSU sequencing facility (RTSF).</p>
-<p>Trimmomatic can be downloaded from <a class="reference external" href="http://www.usadellab.org/cms/index.php?page=trimmomatic">here</a>.</p>
-<p>Scroll down the page (which you can read at your leisure later if you are interested) to where it says &#8220;Download Trimmomatic&#8221;</p>
-<p>Click on the link that says &#8220;binary&#8221;</p>
+<ol class="arabic simple">
+<li>Trimmomatic can be downloaded from <a class="reference external" href="http://www.usadellab.org/cms/index.php?page=trimmomatic">here</a>.</li>
+<li>Scroll down the page (which you can read at your leisure later if you are interested) to where it says &#8220;Download Trimmomatic&#8221;</li>
+<li>Click on the link that says &#8220;binary&#8221;</li>
+</ol>
 <a class="reference internal image-reference" href="_images/trimbinary.jpg"><img alt="image showing area where to download the binary file for Trimmomatic" class="align-center" src="_images/trimbinary.jpg" style="width: 400px; height: 300px;" /></a>
+<ol class="arabic simple" start="4">
+<li>The file will end up in your downloads folder and will likely need to be unzipped as it is compressed. This can typically be accomplished just by double clicking on the file itself in your downloads folder.</li>
+<li>Once this is done, move the folder to your desktop.</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Trimmomatic runs on Java. Go <a class="reference external" href="http://www.java.com/en/">here</a> and click on &#8220;Download&#8221; and download/install the latest version of Java for your computer. <strong>Trimmomatic will not run unless you have Java installed</strong>.</p>
+</div>
+<ol class="arabic simple" start="6">
+<li>Open the Trimmomatic folder on your desktop and navigate to the folder called <strong>adapters</strong>.</li>
+<li>Drag and drop the file <strong>TruSeq3-SE.fa</strong> out of the adapters subfolder and into the main <strong>Trimmomatic</strong> folder. The list of files in the main folder will like be: an adapters folder, LICENSE, trimmomatic-0.32.jar, and TruSeq3-SE.fa.</li>
+<li>You should be all set for installing this software!</li>
+</ol>
 </div>
 <div class="section" id="fastqc">
-<span id="id2"></span><h2>FastQC<a class="headerlink" href="#fastqc" title="Permalink to this headline">¶</a></h2>
-<p>Text</p>
+<span id="id3"></span><h2>FastQC<a class="headerlink" href="#fastqc" title="Permalink to this headline">¶</a></h2>
+<p>FastQC is an application that can be utilized to assess sequence data. It&#8217;s worth looking at the reads after trimming/before aligning to the genome and after aligning to the genome.</p>
+<ol class="arabic simple">
+<li>FastQC can be downloaded <a class="reference external" href="http://www.bioinformatics.babraham.ac.uk/projects/fastqc/">here</a>.</li>
+</ol>
+<img alt="image showing area where to download FastQC" class="align-center" src="_images/fastqc.jpg" />
+<img alt="image showing area where to download either Windows or Mac FastQC files" class="align-center" src="_images/fastqcfiledownload.jpg" />
+<ol class="arabic simple" start="2">
+<li>The software is well documented and quite powerful. Every statistic/assessment that it draws can be found in the <a class="reference external" href="http://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/">FastQC documentation</a>. Further, you can watch a <a class="reference external" href="https://www.youtube.com/watch?v=bz93ReOv87Y">tutorial video</a> and view examples of <a class="reference external" href="http://www.bioinformatics.babraham.ac.uk/projects/fastqc/good_sequence_short_fastqc.html">good Illumina data</a> and <a class="reference external" href="http://www.bioinformatics.babraham.ac.uk/projects/fastqc/bad_sequence_fastqc.html">bad Illumina data</a>.</li>
+<li>The file will end up in your downloads folder. If you are a <strong>Windows user</strong>, double click on the <strong>run_fastqc bat file</strong>. If you are a <strong>Mac</strong> user, double click on the <strong>fastqc_vX.XX.X.dmg file</strong> to run the application.</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">FastQC runs on Java. Go <a class="reference external" href="http://www.java.com/en/">here</a> and click on &#8220;Download&#8221; and download/install the latest version of Java for your computer. <strong>FastQC will not run unless you have Java installed</strong>.</p>
+</div>
+<ol class="arabic simple" start="4">
+<li>Please attempt to open the software to make sure that everything will at least open and run.</li>
+<li>Congratulations! You&#8217;ve installed another piece of software for this module.</li>
+</ol>
 </div>
 <div class="section" id="r">
-<span id="id3"></span><h2>R<a class="headerlink" href="#r" title="Permalink to this headline">¶</a></h2>
-<p>Text</p>
+<span id="id6"></span><h2>R<a class="headerlink" href="#r" title="Permalink to this headline">¶</a></h2>
+<p>In order to do differential gene expression to compare treatments and identify what is changing at the transcript level, we need to install the statistical programming language R and a really neat interface to work in R called RStudio.</p>
+<ol class="arabic simple">
+<li>R can be downloaded from <a class="reference external" href="http://cran.mtu.edu/">here</a>.</li>
+<li>Click on the appropriate link for your operating system (Linux, Mac OS X, or Windows).</li>
+</ol>
+<img alt="image showing the list of platforms that R can be downloaded/installed for" class="align-center" src="_images/Rplatformselection.jpg" />
+<ol class="arabic simple" start="3">
+<li>Then, click on the latest version of the software. This will initiate the download. <strong>Windows users</strong> unless you know you already have R installed, click on the <strong>install R for the first time</strong> link (see below). <strong>Mac users</strong> you have two options based on what flavor of OS X you have. If you are not sure what version you have, look at the screen shots below.</li>
+</ol>
+<p><strong>Windows users:</strong></p>
+<img alt="R for Windows" class="align-center" src="_images/RforWindows.jpg" />
+<p><strong>Mac users (to determine OS X version):</strong></p>
+<img alt="About this Mac navigation" class="align-center" src="_images/applebutton.jpg" />
+<img alt="Version of Mac OS X" class="align-center" src="_images/appleversion.jpg" />
+<p><strong>Mac users (version of R to download):</strong></p>
+<img alt="R for Mac based on OS X version" class="align-center" src="_images/RforMac.jpg" />
+<ol class="arabic simple" start="4">
+<li></li>
+</ol>
 </div>
 <div class="section" id="rstudio">
-<span id="id4"></span><h2>RStudio<a class="headerlink" href="#rstudio" title="Permalink to this headline">¶</a></h2>
+<span id="id8"></span><h2>RStudio<a class="headerlink" href="#rstudio" title="Permalink to this headline">¶</a></h2>
 <p>Text</p>
 </div>
 </div>

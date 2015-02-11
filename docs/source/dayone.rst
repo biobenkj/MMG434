@@ -58,15 +58,11 @@ FastQC is an application that can be utilized to assess sequence data. It's wort
 1. FastQC can be downloaded `here <http://www.bioinformatics.babraham.ac.uk/projects/fastqc/>`_.
 
 .. image:: fastqc.jpg
-	:width: 500px
 	:align: center
-	:height: 250px
 	:alt: image showing area where to download FastQC
 	
 .. image:: fastqcfiledownload.jpg
-	:width: 500px
 	:align: center
-	:height: 250px
 	:alt: image showing area where to download either Windows or Mac FastQC files
 
 2. The software is well documented and quite powerful. Every statistic/assessment that it draws can be found in the `FastQC documentation <http://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/>`_. Further, you can watch a `tutorial video <https://www.youtube.com/watch?v=bz93ReOv87Y>`_ and view examples of `good Illumina data <http://www.bioinformatics.babraham.ac.uk/projects/fastqc/good_sequence_short_fastqc.html>`_ and `bad Illumina data <http://www.bioinformatics.babraham.ac.uk/projects/fastqc/bad_sequence_fastqc.html>`_.
@@ -84,12 +80,59 @@ FastQC is an application that can be utilized to assess sequence data. It's wort
 R
 -
 
-Text
+In order to do differential gene expression to compare treatments and identify what is changing at the transcript level, we need to install the statistical programming language R and a really neat interface to work in R called RStudio.
 
+1. R can be downloaded from `here <http://cran.mtu.edu/>`_.
+
+2. Click on the appropriate link for your operating system (Linux, Mac OS X, or Windows).
+
+.. image:: Rplatformselection.jpg
+	:align: center
+	:alt: image showing the list of platforms that R can be downloaded/installed for
+
+3. Then, click on the latest version of the software. This will initiate the download. **Windows users** unless you know you already have R installed, click on the **install R for the first time** link (see below). **Mac users** you have two options based on what flavor of OS X you have. If you are not sure what version you have, look at the screen shots below. 
+
+**Windows users:**
+
+.. image:: RforWindows.jpg
+	:align: center
+	:alt: R for Windows
+	
+**Mac users (to determine OS X version):**
+
+.. image:: applebutton.jpg
+	:align: center
+	:alt: About this Mac navigation
+	
+.. image:: appleversion.jpg
+	:align: center
+	:alt: Version of Mac OS X
+	
+**Mac users (version of R to download):**
+
+.. image:: RforMac.jpg
+	:align: center
+	:alt: R for Mac based on OS X version
+	
+4. After the download finishes, double-click on the file and follow the instructions to install the software.
+
+5. Congratulations! You've installed yet another piece of software for this module.
 
 .. _rstudio:
 
 RStudio
 -------
 
-Text
+RStudio is a fantastic interface to work in R. R does have a graphical user interface (GUI) that you can download and use, however I find RStudio much more intuitive/easier to use.
+
+1. RStudio can be downloaded `here <http://www.rstudio.com/products/RStudio/#Desk>`_.
+
+2. We want to download and install the open-source version of RStudio for the desktop.
+
+.. image:: RStudio.jpg
+	:align: center
+	:alt: RStudio for desktop download button
+	
+3. Double click the file after the software has finished downloading and follow the instructions to install the software.
+
+4. That's it! You're done!
