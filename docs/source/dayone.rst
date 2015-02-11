@@ -57,6 +57,18 @@ FastQC is an application that can be utilized to assess sequence data. It's wort
 
 1. FastQC can be downloaded `here <http://www.bioinformatics.babraham.ac.uk/projects/fastqc/>`_.
 
+.. image:: fastqc.jpg
+	:width: 500px
+	:align: center
+	:height: 250px
+	:alt: image showing area where to download FastQC
+	
+.. image:: fastqcfiledownload.jpg
+	:width: 500px
+	:align: center
+	:height: 250px
+	:alt: image showing area where to download either Windows or Mac FastQC files
+
 2. The software is well documented and quite powerful. Every statistic/assessment that it draws can be found in the `FastQC documentation <http://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/>`_. Further, you can watch a `tutorial video <https://www.youtube.com/watch?v=bz93ReOv87Y>`_ and view examples of `good Illumina data <http://www.bioinformatics.babraham.ac.uk/projects/fastqc/good_sequence_short_fastqc.html>`_ and `bad Illumina data <http://www.bioinformatics.babraham.ac.uk/projects/fastqc/bad_sequence_fastqc.html>`_.
 
 3. The file will end up in your downloads folder. If you are a **Windows user**, double click on the **run_fastqc bat file**. If you are a **Mac** user, double click on the **fastqc_vX.XX.X.dmg file** to run the application.
