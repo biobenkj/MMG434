@@ -55,7 +55,7 @@ Multiplexing the sequencing process by pooling several samples together is not o
 	:alt: Multiplexing samples diagram
 *From: http://www.illumina.com/content/dam/illumina-marketing/documents/products/sequencing_introduction_microbiology.pdf*
 
-This is an example of what a *batch effect* looks like. Note how DMSO1 and ETZ 1 group together and DMSO2 and ETZ2 group together (e.g. by batch).
+This is an example of what a *batch effect* looks like. Note how DMSO1 and ETZ1 group together and DMSO2 and ETZ2 group together (e.g. by batch).
 
 .. image:: batcheffect.jpg
 	:align: center
