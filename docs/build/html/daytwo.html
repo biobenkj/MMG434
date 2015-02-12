@@ -64,6 +64,41 @@
 <p>This video does a pretty good job explaining how, in generalities the sequencing process works for DNA. So for sequencing RNA, the process is as follows:</p>
 <img alt="RNAseq workflow" class="align-center" src="_images/rnaseqworkflow.jpg" />
 <p><em>Adapted from: Zhernakova et al., PLoS Genetics 2013</em></p>
+<p>So actually, we aren&#8217;t sequencing RNA at all! We are sequencing the cDNA made from the RNA. RNA-seq is a high resolution next generation sequencing (NGS) method to assess the transcriptome of an organism and compare transcriptional changes between organisms/treatments to ascertain specific pathways/genes that are moving in response. But now, let&#8217;s talk about what can add bias to the data and what we do with the data to make sure that it is reasonable to proceed to further analysis steps.</p>
+<p>But first, let&#8217;s brainstorm a little bit. Look back at the RNA-seq workflow figure above and let&#8217;s suggest a few places where things could potentially affect the output dataset.</p>
+<p>Here are a few thoughts...</p>
+<blockquote>
+<div><ul class="simple">
+<li>How could the random priming step affect downstream results?</li>
+<li>How could RNA secondary structures affect the library preparation process?</li>
+<li>Would GC content be a problem?</li>
+<li>Could gene length cause issues?</li>
+<li>What might happen if you have genes with substantially different expression levels?</li>
+<li>During the cluster generation on the Illumina flow cell, what might happen if you have too few clusters? Too many?</li>
+<li>How is it possible to sequence many samples at one time?</li>
+<li>What if you run out of reagents from one kit and have to open another kit to finish the library preparation process?</li>
+<li>Could sequencing depth be an issue?</li>
+</ul>
+</div></blockquote>
+<p>So now that you may be questioning the validity of any RNA-seq dataset, take heart! Many very smart people have thought about these issues and come up with ways to assess technical artifacts and correct for them. So again, let&#8217;s brainstorm some potential solutions to these problems. Which problems can be addressed through better chemistries/processes vs. mathematical/computational correction?</p>
+<p>These sorts of issues should always be considered, but recognize that RNA-seq is becoming fairly commonplace and solutions to many of these questions exist. Be critical of your data and <em>always</em> look at the raw data.</p>
+<p>Multiplexing the sequencing process by pooling several samples together is not only cheaper, it can overcome what are known as <em>batch effects</em>. Batch effects are when you have samples that correlate with one another based on batch/time/etc. instead of biological replication. This is a very real phenomenon and can be caused by using different lots of the same kit/flow cells when preparing samples! You can correct for this, but we will get there later... For now, have a look at the diagram showing how multiplexing is achieved.</p>
+<img alt="Multiplexing samples diagram" class="align-center" src="_images/multiplex.jpg" />
+<p><em>From: http://www.illumina.com/content/dam/illumina-marketing/documents/products/sequencing_introduction_microbiology.pdf</em></p>
+<p>This is an example of what a <em>batch effect</em> looks like. Note how DMSO1 and ETZ1 group together and DMSO2 and ETZ2 group together (e.g. by batch).</p>
+<img alt="Batch effect example" class="align-center" src="_images/batcheffect.jpg" />
+<p>We can determine what is considered a &#8220;good&#8221; base call from a &#8220;bad&#8221; one through using what is known as the Phred scoring system or Q-score.</p>
+<p>Where Q is defined as a property that is logarithmically related to the base call error probability (P):</p>
+<div class="math">
+<p><span class="math">Q = -10 \log_{10} P</span></p>
+</div><p>So this means:</p>
+<img alt="Phred scoring table" class="align-center" src="_images/basecall.jpg" />
+<p><em>From: http://res.illumina.com/documents/products/technotes/technote_q-scores.pdf</em></p>
+<p>Illumina tends to output sequence results with a Q &gt; 30. So let&#8217;s have a look at what some raw data looks like in terms of Q-scores before and after trimming adapters and low quality reads.</p>
+<img alt="Raw vs trimmed alignment" class="align-center" src="_images/rawvstrimmedalign.jpg" />
+<p>This is why we do the trimming before attempting to align the reads to the reference genome. Since we are using FastQC, let&#8217;s have a look at some sample data of what <a class="reference external" href="http://www.bioinformatics.babraham.ac.uk/projects/fastqc/good_sequence_short_fastqc.html">good Illumina data looks like</a>.</p>
+<p>So, we have come to the end of the background section. Even with all of the great tools and chemistries that have been developed to handle RNA-seq datasets, the old mantra still applies: <em>garbage in; garbage out</em> and <em>with great power comes great responsibility</em>. Take care in analyzing these sorts of data as they typically influence many downstream experiments.</p>
+<p><strong>Questions!</strong></p>
 </div>
 <div class="section" id="basic-linux-unix-commands">
 <span id="basic-unix-coms"></span><h2>Basic Linux/Unix commands<a class="headerlink" href="#basic-linux-unix-commands" title="Permalink to this headline">¶</a></h2>
@@ -142,6 +177,20 @@
 <p><strong>1.</strong> I am going to take the easy way out and <a class="reference external" href="https://wiki.hpcc.msu.edu/display/hpccdocs/Video+Tutorial+-+Putty">here</a> is a video on how to install an ssh client on Windows.</p>
 <p><strong>2.</strong> Congratulations! You&#8217;ve logged in. Let&#8217;s make a new folder here in anticipation of putting the data into it. Let&#8217;s call it <strong>RNAseq</strong>. Please don&#8217;t add any spaces. If you aren&#8217;t sure how to make a new folder, scroll up a bit to the <a class="reference internal" href="#basic-unix-coms"><em>Basic Linux/Unix commands</em></a>.</p>
 <p><strong>3.</strong> To <strong>log out</strong>, type: <strong>exit</strong>.</p>
+<p><strong>Transferring files from your machine to the HPCC using FileZilla</strong></p>
+<p><strong>1.</strong> If you haven&#8217;t already downloaded and installed <a class="reference external" href="https://filezilla-project.org/">FileZilla,</a>, please do so. We want to download the <strong>FileZilla Client</strong> and <em>not</em> the server version.</p>
+<p><strong>2.</strong> Open the application and then we will need to input a few things to get connected to the MSU HPCC.</p>
+<blockquote>
+<div><ul class="simple">
+<li>Host: hpcc.msu.edu</li>
+<li>Username: Your MSU NetID</li>
+<li>Password: Your MSU NetID password</li>
+<li>Port: 22</li>
+<li>Click <strong>Quickconnect</strong></li>
+</ul>
+</div></blockquote>
+<p><strong>3.</strong> Now that you are connected, you can move files from your computer (red circle) to the MSU HPCC (green circle) and vice versa, simply by double clicking the file. The connection closes if you exit out of the application.</p>
+<img alt="Transfer files from local host to HPCC with FileZilla" class="align-center" src="_images/filezillaclient.jpg" />
 </div>
 <div class="section" id="bowtie-primer">
 <span id="bowtieprimer"></span><h2>Bowtie primer<a class="headerlink" href="#bowtie-primer" title="Permalink to this headline">¶</a></h2>

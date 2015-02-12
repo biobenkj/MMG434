@@ -67,7 +67,7 @@ Where Q is defined as a property that is logarithmically related to the base cal
 
 .. math::
 
-	Q = -10 log_10 P
+	Q = -10 \log_{10} P
 	
 So this means:
 
