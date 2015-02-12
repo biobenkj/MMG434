@@ -248,12 +248,12 @@ Adding the word **trimmed** in front of the filename is important for the alignm
 
 **7.** After you've added the appropriate file names into the command, hit Enter/Return. It will run for a little while and then produce some output like this:
 
-``TrimmomaticSE: Started with arguments: -phred33 /Volumes/Abramovitch Lab/RNAseq/Jake/1Gly7A_CGATGT_L008_R1_001.fastq.gz /Volumes/Abramovitch Lab/RNAseq/Jake/Trimmomatic/1Gly7Atrimmed.fq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+TrimmomaticSE: Started with arguments: -phred33 /Volumes/Abramovitch Lab/RNAseq/Jake/1Gly7A_CGATGT_L008_R1_001.fastq.gz /Volumes/Abramovitch Lab/RNAseq/Jake/Trimmomatic/1Gly7Atrimmed.fq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
 Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
 Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
 ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
 Input Reads: 29294470 Surviving: 28401299 (96.95%) Dropped: 893171 (3.05%)
-TrimmomaticSE: Completed successfully``
+TrimmomaticSE: Completed successfully
 
 **8.** Copy this output into a text file somewhere and save it. You might want this for a report when you're finished.
 
