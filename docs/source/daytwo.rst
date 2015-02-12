@@ -124,7 +124,7 @@ There are multiple ways with which you can access the HPCC and transfer files to
 	* Port: 22
 	* Click **Quickconnect**
 	
-**3.** Now that you are connected, you can move files from your computer (red circle) to the MSU HPCC (green circle). The connection closes if you exit out of the application.
+**3.** Now that you are connected, you can move files from your computer (red circle) to the MSU HPCC (green circle) and vice versa, simply by double clicking the file. The connection closes if you exit out of the application.
 
 .. image:: filezillaclient.jpg
 	:align: center
