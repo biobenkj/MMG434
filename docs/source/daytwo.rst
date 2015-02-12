@@ -40,12 +40,34 @@ Here are a few thoughts...
 	* Could gene length cause issues?
 	* What might happen if you have genes with substantially different expression levels?
 	* During the cluster generation on the Illumina flow cell, what might happen if you have too few clusters? Too many?
+	* How is it possible to sequence many samples at one time?
+	* What if you run out of reagents from one kit and have to open another kit to finish the library preparation process?
 	
 So now that you may be questioning the validity of any RNA-seq dataset, take heart! Many very smart people have thought about these issues and come up with ways to assess technical artifacts and correct for them. So again, let's brainstorm some potential solutions to these problems. Which problems can be addressed through better chemistries/processes vs. mathematical/computational correction?
 
 These sorts of issues should always be considered, but recognize that RNA-seq is becoming fairly commonplace and solutions to many of these questions exist. Be critical of your data and *always* look at the raw data.
 
+Multiplexing the sequencing process by pooling several samples together is not only cheaper, it can overcome what are known as *batch effects*. Batch effects are when you have samples that correlate with one another based on batch/time/etc. instead of biological replication. This is a very real phenomenon and can be caused by using different lots of the same kit/flow cells when preparing samples! You can correct for this, but we will get there later... For now, have a look at the diagram showing how multiplexing is achieved.
 
+.. image:: multiplex.jpg
+	:align: center
+	:alt: Multiplexing samples diagram
+*From: http://www.illumina.com/content/dam/illumina-marketing/documents/products/sequencing_introduction_microbiology.pdf*
+
+We can determine what is considered a "good" base call from a "bad" one through using what is known as the Phred scoring system or Q-score.
+
+Where Q is defined as a property that is logarithmically related to the base call error probability (P):
+.. math::
+
+	Q = -10 log_10 P
+	
+So this means:
+
+.. image:: basecall.jpg
+	:align: center
+	:alt: Phred scoring table
+
+*From: http://res.illumina.com/documents/products/technotes/technote_q-scores.pdf*
 
 .. _basic-unix-coms:
 
