@@ -58,6 +58,8 @@ To refresh your memory on some basic Linux/Unix commands, we will cover the basi
 	
 *Ref. sheet from: http://files.fosswire.com/2007/08/fwunixref.pdf*
 
+.. _logintohpcc:
+
 Logging into and transferring files to the MSU HPCC
 ---------------------------------------------------
 
@@ -88,7 +90,7 @@ There are multiple ways with which you can access the HPCC and transfer files to
 
 
 **Windows users:** 
-**1.** I am going to take the easy way out and `here <https://wiki.hpcc.msu.edu/display/hpccdocs/Video+Tutorial+-+Putty`_ is a video on how to install an ssh client on Windows.
+**1.** I am going to take the easy way out and `here <https://wiki.hpcc.msu.edu/display/hpccdocs/Video+Tutorial+-+Putty>`_ is a video on how to install an ssh client on Windows.
 
 **2.** Congratulations! You've logged in. Let's make a new folder here in anticipation of putting the data into it. Let's call it **RNAseq**. Please don't add any spaces. If you aren't sure how to make a new folder, scroll up a bit to the :ref: `basic-unix-coms`.
 
