@@ -72,7 +72,7 @@ There are multiple ways with which you can access the HPCC and transfer files to
 	:align: center
 	:alt: Navigate to terminal on a Mac
 
-**2.** Type: ssh ``YourMSUNetID@hpcc.msu.edu``
+**2.** Type: **ssh YourMSUNetID@hpcc.msu.edu**
 
 **3.** You will then be prompted for your MSU NetID password. As you begin to type, the cursor will not show that you are entering characters, but you are. Hit the Enter/Return key at the end and you will be logged in. If this is the first time accessing the HPCC, it will send you a warning about not recognizing the RSA fingerprint. Type **yes** or **y** or whatever it needs to continue. It is okay, and necessary, to say you trust iCER to use the HPCC at MSU. If you are uncomfortable with any of this, utilize a lab or MSU computer.
 
