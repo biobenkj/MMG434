@@ -30,6 +30,22 @@ This video does a pretty good job explaining how, in generalities the sequencing
 
 So actually, we aren't sequencing RNA at all! We are sequencing the cDNA made from the RNA. But now, let's talk about what can add bias to the data and what we do with the data to make sure that it is reasonable to proceed to further analysis steps.
 
+But first, let's brainstorm a little bit. Look back at the RNA-seq workflow figure above and let's suggest a few places where things could potentially affect the output dataset.
+
+Here are a few thoughts...
+
+	* How could the random priming step affect downstream results?
+	* How could RNA secondary structures affect the library preparation process?
+	* Would GC content be a problem?
+	* Could gene length cause issues?
+	* What might happen if you have genes with substantially different expression levels?
+	* During the cluster generation on the Illumina flow cell, what might happen if you have too few clusters? Too many?
+	
+So now that you may be questioning the validity of any RNA-seq dataset, take heart! Many very smart people have thought about these issues and come up with ways to assess technical artifacts and correct for them. So again, let's brainstorm some potential solutions to these problems. Which problems can be addressed through better chemistries/processes vs. mathematical/computational correction?
+
+These sorts of issues should always be considered, but recognize that RNA-seq is becoming fairly commonplace and solutions to many of these questions exist. Be critical of your data and *always* look at the raw data.
+
+
 
 .. _basic-unix-coms:
 
