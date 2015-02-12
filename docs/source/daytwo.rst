@@ -1,7 +1,7 @@
 .. _daytwo:
 
-RNA-seq background information, basic Linux/Unix commands, logging into and transferring files to the HPCC, and Trimmomatic primer
-==================================================================================================================================
+RNA-seq background information, basic Linux/Unix commands, logging into and transferring files to the HPCC, and Trimmomatic
+===========================================================================================================================
 
 Let's start with downloading the data! This is going to take a *long* time, so we should start here. We will need to navigate to the `FTP server <ftp://username:password@titan.bch.msu.edu>`_. I would recommend plugging into the ethernet and make sure you have at least 10 GB of space on your computer. Initiate the download by right clicking on a sample and clicking on "Save As". Save this file to your Desktop. Eventually we are going to rename this file after we have a refresher on basic Linux/Unix commands.
 
@@ -13,7 +13,7 @@ Before we dig into the data and begin trimming and aligning the reads to the gen
 
 #. :ref:`logintohpcc`
 
-#. :ref:`trimmomaticprimer`
+#. :ref:`trimmomatic`
 
 .. _rnaseqbackground:
 
@@ -211,10 +211,50 @@ There are multiple ways with which you can access the HPCC and transfer files to
 
 
 	
-.. _trimmomaticprimer:
+.. _trimmomatic:
 
-Trimmomatic primer
-------------------
+Trimmomatic
+-----------
 
+Trimmomatic is a lightweight java application that can remove Illumina adapter sequences and low quality reads. It uses a sliding window to analyze chunks of each read, examining the quality score, minimum read length, if it corresponds to an adapter sequence, etc. Let's have a look at the `documentation <http://www.usadellab.org/cms/index.php?page=trimmomatic>`_ to see what each option does.
 
-**Have fun!**
+To run this application, you have to run it from the command line (e.g. the terminal). If you are a Windows user, you might find it easier to use the Powershell instead of the default command line. To see if you have Powershell, search your computer for it. It recognizes most of the commands listed above whereas the normal Windows terminal does not.
+
+**1.** Navigate to your desktop by typing: **cd ~/Desktop** and hit the Enter/Return key. This should bring you to your desktop directory.
+
+**2.** Type: **ls** to list the contents of your Desktop directory. Check and make sure that you have your raw data file (that has since been renamed) and the Trimmomatic directory that we put there previously.
+
+**3.** Navigate to the Trimmomatic directory by typing: **cd** Trimmomatic and then hit the Tab key. This should auto-complete the name of the directory for you. Tab auto-complete is fantastic for filling in the name of a file for you if you don't remember the exact name. Pretty neat, huh?!
+
+**4.** Now, let's make sure you have Java installed. Type: **java** and hit Enter/Return. The result should be a list of commands trying to help you use Java. If you get an error, let me know.
+
+**5.** At this point, let's try and trim your data file.
+
+**6.** Copy and paste this into your terminal: java -jar ~/Desktop/Trimmomatic-0.32/trimmomatic-0.32.jar SE -phred33 ~/Desktop/NameOfSample.fastq.gz ~/Desktop/NewFileNameForTrimmedSample.fastq ILLUMINACLIP:TruSeq3-SE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+
+.. note:: Read through this command and change the portions that say **NameOfSample.fastq.gz** and **NewFileNameForTrimmedSample.fastq**. **DO NOT ADD SPACES IN YOUR FILE NAMES**
+
+To continue our naming convention please name the **NewFileNameForTrimmedSample.fastq** as the following:
+
+For *L. reuteri* grown in LB, we will name our raw data files as **trimmedLRWT1.fastq**, **trimmedLRWT2.fastq**, **etc.**
+
+For *L. reuteri* grown in the presence of indole, we will name our raw data files as **trimmedLRindole1.fastq**, **trimmedLRindole2.fastq**, **etc.**
+
+For *L. reuteri* grown in the presence of commensal *E. coli* conditioned medium, we will name our raw data files as **trimmedLRcomm1.fastq**, **trimmedLRcomm2.fastq**, **etc.**
+
+For *L. reuteri* grown in the presence of EHEC conditioned medium, we will name our raw data files as **trimmedLRehec1.fastq**, **trimmedLRehec2.fastq**, **etc.**
+
+Adding the word **trimmed** in front of the filename is important for the alignment steps done in Bowtie.
+
+**7.** After you've added the appropriate file names into the command, hit Enter/Return. It will run for a little while and then produce some output like this:
+
+``TrimmomaticSE: Started with arguments: -phred33 /Volumes/Abramovitch Lab/RNAseq/Jake/1Gly7A_CGATGT_L008_R1_001.fastq.gz /Volumes/Abramovitch Lab/RNAseq/Jake/Trimmomatic/1Gly7Atrimmed.fq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Input Reads: 29294470 Surviving: 28401299 (96.95%) Dropped: 893171 (3.05%)
+TrimmomaticSE: Completed successfully``
+
+**8.** Copy this output into a text file somewhere and save it. You might want this for a report when you're finished.
+
+**Have fun! Let me know if you have questions by placing a red sticky note on your computer.**
