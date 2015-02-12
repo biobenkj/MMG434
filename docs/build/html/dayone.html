@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Install software and make sure everyone is on the same page &mdash; MMG464 0.0.1 documentation</title>
+    <title>Install software and make sure everyone is on the same page &mdash; MMG434 0.0.1 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -23,9 +23,9 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="MMG464 0.0.1 documentation" href="index.html" />
-    <link rel="next" title="RNA-seq background information, basic Unix commands, and Bowtie primer" href="daytwo.html" />
-    <link rel="prev" title="Welcome to MMG 464 RNA-seq tutorial" href="index.html" /> 
+    <link rel="top" title="MMG434 0.0.1 documentation" href="index.html" />
+    <link rel="next" title="RNA-seq background information, basic Linux/Unix commands, and Bowtie primer" href="daytwo.html" />
+    <link rel="prev" title="Welcome to the MMG 434 RNA-seq tutorial" href="index.html" /> 
   </head>
   <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
@@ -35,12 +35,12 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="daytwo.html" title="RNA-seq background information, basic Unix commands, and Bowtie primer"
+          <a href="daytwo.html" title="RNA-seq background information, basic Linux/Unix commands, and Bowtie primer"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="index.html" title="Welcome to MMG 464 RNA-seq tutorial"
+          <a href="index.html" title="Welcome to the MMG 434 RNA-seq tutorial"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">MMG464 0.0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">MMG434 0.0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -59,6 +59,7 @@
 <li><a class="reference internal" href="#fastqc"><em>FastQC</em></a></li>
 <li><a class="reference internal" href="#r"><em>R</em></a></li>
 <li><a class="reference internal" href="#rstudio"><em>RStudio</em></a></li>
+<li><a class="reference internal" href="#qualimap"><em>Qualimap</em></a></li>
 </ol>
 </div>
 <div class="section" id="trimmomatic">
@@ -86,7 +87,7 @@
 </div>
 <div class="section" id="fastqc">
 <span id="id3"></span><h2>FastQC<a class="headerlink" href="#fastqc" title="Permalink to this headline">¶</a></h2>
-<p>FastQC is an application that can be utilized to assess sequence data. It&#8217;s worth looking at the reads after trimming/before aligning to the genome and after aligning to the genome.</p>
+<p>FastQC is an application that can be utilized to assess sequence data. It&#8217;s worth looking at the reads after trimming/before aligning to the genome.</p>
 <ol class="arabic simple">
 <li>FastQC can be downloaded <a class="reference external" href="http://www.bioinformatics.babraham.ac.uk/projects/fastqc/">here</a>.</li>
 </ol>
@@ -124,12 +125,47 @@
 <p><strong>Mac users (version of R to download):</strong></p>
 <img alt="R for Mac based on OS X version" class="align-center" src="_images/RforMac.jpg" />
 <ol class="arabic simple" start="4">
-<li></li>
+<li>After the download finishes, double-click on the file and follow the instructions to install the software.</li>
+<li>Congratulations! You&#8217;ve installed yet another piece of software for this module.</li>
 </ol>
 </div>
 <div class="section" id="rstudio">
 <span id="id8"></span><h2>RStudio<a class="headerlink" href="#rstudio" title="Permalink to this headline">¶</a></h2>
-<p>Text</p>
+<p>RStudio is a fantastic interface to work in R. R does have a graphical user interface (GUI) that you can download and use, however I find RStudio much more intuitive/easier to use.</p>
+<ol class="arabic simple">
+<li>RStudio can be downloaded <a class="reference external" href="http://www.rstudio.com/products/RStudio/#Desk">here</a>.</li>
+<li>We want to download and install the open-source version of RStudio for the desktop.</li>
+</ol>
+<img alt="RStudio for desktop download button" class="align-center" src="_images/RStudio.jpg" />
+<ol class="arabic simple" start="3">
+<li>Double click the file after the software has finished downloading and follow the instructions to install the software.</li>
+<li>That&#8217;s it!</li>
+</ol>
+</div>
+<div class="section" id="qualimap">
+<span id="id10"></span><h2>Qualimap<a class="headerlink" href="#qualimap" title="Permalink to this headline">¶</a></h2>
+<p>The last piece of software that is nice to have is a software suite that works with Java and R to generate PDF documents summarizing the data post-alignment to the genome.</p>
+<ol class="arabic simple">
+<li>Qualimap can be downloaded <a class="reference external" href="http://qualimap.bioinfo.cipf.es/">here</a>.</li>
+<li>Click on the .zip file (as seen below)</li>
+</ol>
+<img alt="Qualimap download" class="align-center" src="_images/qualimapdownload.jpg" />
+<ol class="arabic simple" start="3">
+<li>The file will end up in your downloads folder and will likely need to be unzipped as it is compressed. This can typically be accomplished just by double clicking on the file itself in your downloads folder.</li>
+<li>Once this is done, move the folder to your desktop.</li>
+<li>Before we can run this software suite, we will need to install a few packages in R: optparse (from CRAN), NOISeq, Repitools, Rsamtools, GenomicFeatures, rtracklayer (all available from Bioconductor).</li>
+<li>To do this, open RStudio, and click on the <strong>packages</strong> tab and then the <strong>Install</strong> button.</li>
+</ol>
+<img alt="Install new packages in RStudio" class="align-center" src="_images/RStudioinstallpackages.jpg" />
+<ol class="arabic simple" start="7">
+<li>Type <strong>optparse</strong> into the <strong>Packages (separate multiple with space or comma):</strong> field. Then click <strong>Install</strong>. RStudio should do the rest.</li>
+<li>To install the packages from Bioconductor, click next to the <strong>&gt;</strong> cursor. Type <strong>source(&#8220;http://bioconductor.org/biocLite.R&#8221;)</strong> and hit Enter/Return.</li>
+</ol>
+<img alt="BiocLite installer" class="align-center" src="_images/biocinstaller.jpg" />
+<ol class="arabic simple" start="9">
+<li>Then type <strong>biocLite(&#8220;NOISeq&#8221;)</strong> and hit Enter/Return. Repeat for Repitools, Rsamtools, GenomicFeatures, and rtracklayer.</li>
+<li>That&#8217;s all the software we need to install for now!</li>
+</ol>
 </div>
 </div>
 
@@ -147,16 +183,17 @@
 <li><a class="reference internal" href="#fastqc">FastQC</a></li>
 <li><a class="reference internal" href="#r">R</a></li>
 <li><a class="reference internal" href="#rstudio">RStudio</a></li>
+<li><a class="reference internal" href="#qualimap">Qualimap</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="index.html"
-                        title="previous chapter">Welcome to MMG 464 RNA-seq tutorial</a></p>
+                        title="previous chapter">Welcome to the MMG 434 RNA-seq tutorial</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="daytwo.html"
-                        title="next chapter">RNA-seq background information, basic Unix commands, and Bowtie primer</a></p>
+                        title="next chapter">RNA-seq background information, basic Linux/Unix commands, and Bowtie primer</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -188,12 +225,12 @@
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="daytwo.html" title="RNA-seq background information, basic Unix commands, and Bowtie primer"
+          <a href="daytwo.html" title="RNA-seq background information, basic Linux/Unix commands, and Bowtie primer"
              >next</a> |</li>
         <li class="right" >
-          <a href="index.html" title="Welcome to MMG 464 RNA-seq tutorial"
+          <a href="index.html" title="Welcome to the MMG 434 RNA-seq tutorial"
              >previous</a> |</li>
-        <li><a href="index.html">MMG464 0.0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">MMG434 0.0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

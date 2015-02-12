@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>RNA-seq background information, basic Unix commands, and Bowtie primer &mdash; MMG464 0.0.1 documentation</title>
+    <title>RNA-seq background information, basic Linux/Unix commands, and Bowtie primer &mdash; MMG434 0.0.1 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="MMG464 0.0.1 documentation" href="index.html" />
+    <link rel="top" title="MMG434 0.0.1 documentation" href="index.html" />
     <link rel="next" title="Align sequences with Bowtie and FastQC primer for alignment quality assessment" href="daythree.html" />
     <link rel="prev" title="Install software and make sure everyone is on the same page" href="dayone.html" /> 
   </head>
@@ -40,7 +40,7 @@
         <li class="right" >
           <a href="dayone.html" title="Install software and make sure everyone is on the same page"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">MMG464 0.0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">MMG434 0.0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -49,9 +49,82 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="rna-seq-background-information-basic-unix-commands-and-bowtie-primer">
-<span id="daytwo"></span><h1>RNA-seq background information, basic Unix commands, and Bowtie primer<a class="headerlink" href="#rna-seq-background-information-basic-unix-commands-and-bowtie-primer" title="Permalink to this headline">¶</a></h1>
-<p>Text here</p>
+  <div class="section" id="rna-seq-background-information-basic-linux-unix-commands-and-bowtie-primer">
+<span id="daytwo"></span><h1>RNA-seq background information, basic Linux/Unix commands, and Bowtie primer<a class="headerlink" href="#rna-seq-background-information-basic-linux-unix-commands-and-bowtie-primer" title="Permalink to this headline">¶</a></h1>
+<p>Before we really dig into the data and begin trimming and aligning the reads to the genome, I think it is useful to understand what happens <em>after you submit your RNA to the sequencing facility</em>. This sort of knowledge can be very useful in understanding what could potentially provide bias and any number of issues to the end dataset. In this session we will cover several things including:</p>
+<ol class="arabic simple">
+<li><a class="reference internal" href="#rnaseqbackground"><em>RNA-seq background information</em></a></li>
+<li><a class="reference internal" href="#basic-unix-coms"><em>Basic Linux/Unix commands</em></a></li>
+<li><a class="reference internal" href="#bowtieprimer"><em>Bowtie primer</em></a></li>
+</ol>
+<div class="section" id="rna-seq-background-information">
+<span id="rnaseqbackground"></span><h2>RNA-seq background information<a class="headerlink" href="#rna-seq-background-information" title="Permalink to this headline">¶</a></h2>
+<p>Text</p>
+</div>
+<div class="section" id="basic-linux-unix-commands">
+<span id="basic-unix-coms"></span><h2>Basic Linux/Unix commands<a class="headerlink" href="#basic-linux-unix-commands" title="Permalink to this headline">¶</a></h2>
+<p>To refresh your memory on some basic Linux/Unix commands, we will cover the basic commands necessary to:</p>
+<p><strong>1.</strong> Move through folders</p>
+<p><strong>2.</strong> List the contents of a folder</p>
+<p><strong>3.</strong> Make new folders</p>
+<p><strong>4.</strong> Rename files/folders</p>
+<p><strong>5.</strong> Delete files/folders</p>
+<p><strong>6.</strong> Load modules on the MSU HPCC</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="3%" />
+<col width="13%" />
+<col width="17%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">&nbsp;</th>
+<th class="head">Command</th>
+<th class="head">What it does...</th>
+<th class="head">Examples</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>1.</strong></td>
+<td>cd</td>
+<td>Change directory/folder</td>
+<td><strong>&gt;</strong> cd ~ (this changes to your home directory); <strong>&gt;</strong> cd .. (this goes back one folder)</td>
+</tr>
+<tr class="row-odd"><td><strong>2.</strong></td>
+<td>ls</td>
+<td>List the contents of a folder</td>
+<td><strong>&gt;</strong> ls</td>
+</tr>
+<tr class="row-even"><td><strong>3.</strong></td>
+<td>mkdir</td>
+<td>Make a new directory/folder</td>
+<td><strong>&gt;</strong> mkdir NewFolder (this will make a new folder called &#8216;NewFolder&#8217; in your current directory)</td>
+</tr>
+<tr class="row-odd"><td><strong>4.</strong></td>
+<td>mv</td>
+<td>Rename or move a file from one name to another</td>
+<td><strong>&gt;</strong> mv file1 file2 (this will rename/move file1 to file2)</td>
+</tr>
+<tr class="row-even"><td><strong>5.</strong></td>
+<td>rm</td>
+<td>Remove a file (add the -r flag to remove a folder)</td>
+<td><strong>&gt;</strong> rm file1 (remove file1); <strong>&gt;</strong> rm -r folder1 (remove folder1)</td>
+</tr>
+<tr class="row-odd"><td><strong>6.</strong></td>
+<td>module load</td>
+<td>Load a module on the MSU HPCC</td>
+<td><strong>&gt;</strong> module load Bowtie (loads the most recent version of Bowtie on the HPCC)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Command reference sheet</strong></p>
+<img alt="Linux/Unix command list" class="align-center" src="_images/linuxcoms.jpg" />
+<p><em>from: http://files.fosswire.com/2007/08/fwunixref.pdf</em></p>
+</div>
+<div class="section" id="bowtie-primer">
+<span id="bowtieprimer"></span><h2>Bowtie primer<a class="headerlink" href="#bowtie-primer" title="Permalink to this headline">¶</a></h2>
+<p>Text</p>
+</div>
 </div>
 
 
@@ -60,6 +133,16 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">RNA-seq background information, basic Linux/Unix commands, and Bowtie primer</a><ul>
+<li><a class="reference internal" href="#rna-seq-background-information">RNA-seq background information</a></li>
+<li><a class="reference internal" href="#basic-linux-unix-commands">Basic Linux/Unix commands</a></li>
+<li><a class="reference internal" href="#bowtie-primer">Bowtie primer</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="dayone.html"
                         title="previous chapter">Install software and make sure everyone is on the same page</a></p>
@@ -102,7 +185,7 @@
         <li class="right" >
           <a href="dayone.html" title="Install software and make sure everyone is on the same page"
              >previous</a> |</li>
-        <li><a href="index.html">MMG464 0.0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">MMG434 0.0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
