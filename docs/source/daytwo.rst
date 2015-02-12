@@ -54,9 +54,16 @@ Multiplexing the sequencing process by pooling several samples together is not o
 	:alt: Multiplexing samples diagram
 *From: http://www.illumina.com/content/dam/illumina-marketing/documents/products/sequencing_introduction_microbiology.pdf*
 
+This is an example of what a *batch effect* looks like.
+
+.. image:: batcheffect.jpg
+	:align: center
+	:alt: Batch effect example
+
 We can determine what is considered a "good" base call from a "bad" one through using what is known as the Phred scoring system or Q-score.
 
 Where Q is defined as a property that is logarithmically related to the base call error probability (P):
+
 .. math::
 
 	Q = -10 log_10 P
@@ -68,6 +75,12 @@ So this means:
 	:alt: Phred scoring table
 
 *From: http://res.illumina.com/documents/products/technotes/technote_q-scores.pdf*
+
+Illumina tends to output sequence results with a Q > 30. So let's have a look at what some raw data looks like in terms of Q-scores before and after trimming adapters and low quality reads.
+
+
+	
+This is why we do the trimming before attempting to align the reads to the reference genome.
 
 .. _basic-unix-coms:
 
