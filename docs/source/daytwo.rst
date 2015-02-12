@@ -1,6 +1,6 @@
 .. _daytwo:
 
-RNA-seq background information, basic Linux/Unix commands, Logging into and transferring files to the MSU HPCC, and Bowtie primer
+RNA-seq background information, basic Linux/Unix commands, logging into and transferring files to the MSU HPCC, and Bowtie primer
 =================================================================================================================================
 
 Before we really dig into the data and begin trimming and aligning the reads to the genome, I think it is useful to understand what happens *after you submit your RNA to the sequencing facility*. This sort of knowledge can be very useful in understanding what could potentially provide bias and any number of issues to the end dataset. In this session we will cover several things including: 
