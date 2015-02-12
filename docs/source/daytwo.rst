@@ -1,9 +1,11 @@
 .. _daytwo:
 
-RNA-seq background information, basic Linux/Unix commands, logging into and transferring files to the MSU HPCC, and Bowtie primer
-=================================================================================================================================
+RNA-seq background information, basic Linux/Unix commands, logging into and transferring files to the HPCC, and Trimmomatic primer
+==================================================================================================================================
 
-Before we really dig into the data and begin trimming and aligning the reads to the genome, I think it is useful to understand what happens *after you submit your RNA to the sequencing facility*. This sort of knowledge can be very useful in understanding what could potentially provide bias and any number of issues to the end dataset. In this session we will cover several things including: 
+Let's start with downloading the data! This is going to take a *long* time, so we should start here. We will need to navigate to the `FTP server <ftp://username:password@titan.bch.msu.edu>_. I would recommend plugging into the ethernet and make sure you have at least 10 GB of space on your computer. Initiate the download by right clicking on a sample and clicking on "Save As". Save this file to your Desktop. Eventually we are going to rename this file after we have a refresher on basic Linux/Unix commands.
+
+Before we dig into the data and begin trimming and aligning the reads to the genome, I think it is useful to understand what happens *after you submit your RNA to the sequencing facility*. This sort of knowledge can be very useful in understanding what could potentially provide bias and any number of issues to the end dataset. In this session we will cover several things including: 
 
 #. :ref:`rnaseqbackground`
 
@@ -11,7 +13,7 @@ Before we really dig into the data and begin trimming and aligning the reads to 
 
 #. :ref:`logintohpcc`
 
-#. :ref:`bowtieprimer`
+#. :ref:`trimmomaticprimer`
 
 .. _rnaseqbackground:
 
@@ -129,6 +131,20 @@ To refresh your memory on some basic Linux/Unix commands, we will cover the basi
 	
 *Ref. sheet from: http://files.fosswire.com/2007/08/fwunixref.pdf*
 
+Let's rename the data file you just downloaded! First, we need to initiate a naming convention for the data. Having a consistent and meaningful naming convention for your data will make it much easier for you and anyone else attempting to work with your data.
+
+**We have four conditions:**
+
+#. *L. reuteri* grown in LB
+#. *L. reuteri* grown in the presence of indole
+#. *L. reuteri* grown in the presence of commensal *E. coli* conditioned medium
+#. *L. reuteri* grown in the presence of EHEC conditioned medium
+
+For *L. reuteri* grown in LB, we will name our raw data files as **LRWT1.fastq.gz**, **LRWT2.fastq.gz**, **etc.**
+For *L. reuteri* grown in the presence of indole, we will name our raw data files as **LRindole1.fastq.gz**, **LRindole2.fastq.gz**, **etc.**
+For *L. reuteri* grown in the presence of commensal *E. coli* conditioned medium, we will name our raw data files as **LRcomm1.fastq.gz**, **LRcomm2.fastq.gz**, **etc.**
+For *L. reuteri* grown in the presence of EHEC conditioned medium, we will name our raw data files as **LRehec1.fastq.gz**, **LRehec2.fastq.gz**, **etc.**
+
 .. _logintohpcc:
 
 Logging into and transferring files to the MSU HPCC
@@ -188,28 +204,14 @@ There are multiple ways with which you can access the HPCC and transfer files to
 	:align: center
 	:alt: Transfer files from local host to HPCC with FileZilla
 	
+ 
 
 
+	
+.. _trimmomaticprimer:
 
-.. _bowtieprimer:
+Trimmomatic primer
+------------------
 
-Bowtie primer
--------------
-
-**What is Bowtie?**
-
-"Bowtie is an ultrafast, memory-efficient short read aligner geared toward quickly aligning large sets of short DNA sequences (reads) to large genomes... Bowtie indexes the genome with a `Burrows-Wheeler <http://en.wikipedia.org/wiki/Burrows%E2%80%93Wheeler_transform>`_ index to keep its memory footprint small..."
-
-**What isn't Bowtie?**
-
-"Bowtie is not a general-purpose alignment tool like MUMer, BLAST, or Vmatch. Bowtie works best when aligning short reads to large genomes, though it supports arbitrarily small reference sequences (e.g. amplicons) and reads as long as 1024 bases. Bowtie is designed to be extremely fast for sets of short reads where (a) many of the reads have at least one good, valid alignment, (b) many of the reads are relatively high-quality, and (c) the number of alignments reported per read is small (close to 1)."
-
-*From: http://bowtie-bio.sourceforge.net/manual.shtml#what-is-bowtie*
-
-In order for Bowtie to work, we need to provide it with trimmed reads files and the reference genome in a FASTA format file. This type of file typically ends in .fa or .fasta. 
-
-We can acquire our favorite reference genome and feature file from the `Ensembl website <http://bacteria.ensembl.org/info/website/ftp/index.html>`_.
-
-So for our purposes, we will download the *L. reuteri* JCM1112 :download:`genome file <lreuterijcm1112.fa>` and :download:`feature file <lreuterijcm1112.gtf>`. The feature file contains data to inform HTSeq where the start and end of a gene is. This is important as HTSeq produces the number of transcripts per gene identified in a given sample. For now, please download these two files, upload them onto the HPCC, and into the RNAseq folder you generated earlier. If you have questions or issues, please place a red sticky note on your computer and I will come and help you.
 
 **Have fun!**
