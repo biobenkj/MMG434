@@ -55,11 +55,15 @@
 <ol class="arabic simple">
 <li><a class="reference internal" href="#rnaseqbackground"><em>RNA-seq background information</em></a></li>
 <li><a class="reference internal" href="#basic-unix-coms"><em>Basic Linux/Unix commands</em></a></li>
+<li><a class="reference internal" href="#logintohpcc"><em>Logging into and transferring files to the MSU HPCC</em></a></li>
 <li><a class="reference internal" href="#bowtieprimer"><em>Bowtie primer</em></a></li>
 </ol>
 <div class="section" id="rna-seq-background-information">
 <span id="rnaseqbackground"></span><h2>RNA-seq background information<a class="headerlink" href="#rna-seq-background-information" title="Permalink to this headline">¶</a></h2>
-<p>Text</p>
+<p>Before we begin, let&#8217;s watch a video about how <a class="reference external" href="https://www.youtube.com/watch?v=womKfikWlxM">Illumina sequencing works</a>.</p>
+<p>This video does a pretty good job explaining how, in generalities the sequencing process works for DNA. So for sequencing RNA, the process is as follows:</p>
+<img alt="RNAseq workflow" class="align-center" src="_images/rnaseqworkflow.jpg" />
+<p><em>Adapted from: Zhernakova et al., PLoS Genetics 2013</em></p>
 </div>
 <div class="section" id="basic-linux-unix-commands">
 <span id="basic-unix-coms"></span><h2>Basic Linux/Unix commands<a class="headerlink" href="#basic-linux-unix-commands" title="Permalink to this headline">¶</a></h2>
@@ -119,7 +123,25 @@
 </table>
 <p><strong>Command reference sheet</strong></p>
 <img alt="Linux/Unix command list" class="align-center" src="_images/linuxcoms.jpg" />
-<p><em>from: http://files.fosswire.com/2007/08/fwunixref.pdf</em></p>
+<p><em>Ref. sheet from: http://files.fosswire.com/2007/08/fwunixref.pdf</em></p>
+</div>
+<div class="section" id="logging-into-and-transferring-files-to-the-msu-hpcc">
+<span id="logintohpcc"></span><h2>Logging into and transferring files to the MSU HPCC<a class="headerlink" href="#logging-into-and-transferring-files-to-the-msu-hpcc" title="Permalink to this headline">¶</a></h2>
+<p>There are multiple ways with which you can access the HPCC and transfer files to the iCER machines. This overview will be from a GUI standpoint. If you would like to get fancy and learn the Linux/Unix commands, you can access the examples on the HPCC wiki <a class="reference external" href="https://wiki.hpcc.msu.edu/display/hpccdocs/Transferring+Files+to+the+HPCC">here</a>. Any other questions you may have not detailed here (which is a lot...) on how to use the HPCC more effectively, you can check out the user manual <a class="reference external" href="https://wiki.hpcc.msu.edu/display/hpccdocs/HPCC+Basics">here</a>. There are even videos of examples on how to use various software packages.</p>
+<p><strong>Mac users:</strong></p>
+<p><strong>1.</strong> Open the terminal by going to Finder -&gt; Applications -&gt; Utilities -&gt; Terminal (might just be worth dragging it onto your dock).</p>
+<img alt="Navigate to terminal on a Mac" class="align-center" src="_images/mactermnav.jpg" />
+<p><strong>2.</strong> Type: <strong>ssh YourMSUNetID&#64;hpcc.msu.edu</strong></p>
+<p><strong>3.</strong> You will then be prompted for your MSU NetID password. As you begin to type, the cursor will not show that you are entering characters, but you are. Hit the Enter/Return key at the end and you will be logged in. If this is the first time accessing the HPCC, it will send you a warning about not recognizing the RSA fingerprint. Type <strong>yes</strong> or <strong>y</strong> or whatever it needs to continue. It is okay, and necessary, to say you trust iCER to use the HPCC at MSU. If you are uncomfortable with any of this, utilize a lab or MSU computer.</p>
+<p><strong>4.</strong> As an example of <strong>Step 3.</strong>, for me it would be <strong>&gt; ssh john3434&#64;hpcc.msu.edu</strong>.</p>
+<p><strong>5.</strong> Once you are logged in, it should look something like this:</p>
+<img alt="HPCC log in screen" class="align-center" src="_images/hpcclogin.jpg" />
+<p><strong>6.</strong> Congratulations! You&#8217;ve logged in. Let&#8217;s make a new folder here in anticipation of putting the data into it. Let&#8217;s call it <strong>RNAseq</strong>. Please don&#8217;t add any spaces. If you aren&#8217;t sure how to make a new folder, scroll up a bit to the <a class="reference internal" href="#basic-unix-coms"><em>Basic Linux/Unix commands</em></a>.</p>
+<p><strong>7.</strong> To <strong>log out</strong>, type: <strong>exit</strong>.</p>
+<p><strong>Windows users:</strong></p>
+<p><strong>1.</strong> I am going to take the easy way out and <a class="reference external" href="https://wiki.hpcc.msu.edu/display/hpccdocs/Video+Tutorial+-+Putty">here</a> is a video on how to install an ssh client on Windows.</p>
+<p><strong>2.</strong> Congratulations! You&#8217;ve logged in. Let&#8217;s make a new folder here in anticipation of putting the data into it. Let&#8217;s call it <strong>RNAseq</strong>. Please don&#8217;t add any spaces. If you aren&#8217;t sure how to make a new folder, scroll up a bit to the <a class="reference internal" href="#basic-unix-coms"><em>Basic Linux/Unix commands</em></a>.</p>
+<p><strong>3.</strong> To <strong>log out</strong>, type: <strong>exit</strong>.</p>
 </div>
 <div class="section" id="bowtie-primer">
 <span id="bowtieprimer"></span><h2>Bowtie primer<a class="headerlink" href="#bowtie-primer" title="Permalink to this headline">¶</a></h2>
@@ -138,6 +160,7 @@
 <li><a class="reference internal" href="#">RNA-seq background information, basic Linux/Unix commands, and Bowtie primer</a><ul>
 <li><a class="reference internal" href="#rna-seq-background-information">RNA-seq background information</a></li>
 <li><a class="reference internal" href="#basic-linux-unix-commands">Basic Linux/Unix commands</a></li>
+<li><a class="reference internal" href="#logging-into-and-transferring-files-to-the-msu-hpcc">Logging into and transferring files to the MSU HPCC</a></li>
 <li><a class="reference internal" href="#bowtie-primer">Bowtie primer</a></li>
 </ul>
 </li>

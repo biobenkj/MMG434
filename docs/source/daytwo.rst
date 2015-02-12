@@ -18,7 +18,18 @@ Before we really dig into the data and begin trimming and aligning the reads to 
 RNA-seq background information
 ------------------------------
 
-Text
+Before we begin, let's watch a video about how `Illumina sequencing works <https://www.youtube.com/watch?v=womKfikWlxM>`_.
+
+This video does a pretty good job explaining how, in generalities the sequencing process works for DNA. So for sequencing RNA, the process is as follows:
+
+.. image:: rnaseqworkflow.jpg
+	:align: center
+	:alt: RNAseq workflow
+	
+*Adapted from: Zhernakova et al., PLoS Genetics 2013*
+
+So actually, we aren't sequencing RNA at all! We are sequencing the cDNA made from the RNA. But now, let's talk about what can add bias to the data and what we do with the data to make sure that it is reasonable to proceed to further analysis steps.
+
 
 .. _basic-unix-coms:
 
