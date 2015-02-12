@@ -140,10 +140,13 @@ Let's rename the data file you just downloaded! First, we need to initiate a nam
 #. *L. reuteri* grown in the presence of commensal *E. coli* conditioned medium
 #. *L. reuteri* grown in the presence of EHEC conditioned medium
 
-	* For *L. reuteri* grown in LB, we will name our raw data files as **LRWT1.fastq.gz**, **LRWT2.fastq.gz**, **etc.**
-	* For *L. reuteri* grown in the presence of indole, we will name our raw data files as **LRindole1.fastq.gz**, **LRindole2.fastq.gz**, **etc.**
-	* For *L. reuteri* grown in the presence of commensal *E. coli* conditioned medium, we will name our raw data files as **LRcomm1.fastq.gz**, **LRcomm2.fastq.gz**, **etc.**
-	* For *L. reuteri* grown in the presence of EHEC conditioned medium, we will name our raw data files as **LRehec1.fastq.gz**, **LRehec2.fastq.gz**, **etc.**
+For *L. reuteri* grown in LB, we will name our raw data files as **LRWT1.fastq.gz**, **LRWT2.fastq.gz**, **etc.**
+
+For *L. reuteri* grown in the presence of indole, we will name our raw data files as **LRindole1.fastq.gz**, **LRindole2.fastq.gz**, **etc.**
+
+For *L. reuteri* grown in the presence of commensal *E. coli* conditioned medium, we will name our raw data files as **LRcomm1.fastq.gz**, **LRcomm2.fastq.gz**, **etc.**
+
+For *L. reuteri* grown in the presence of EHEC conditioned medium, we will name our raw data files as **LRehec1.fastq.gz**, **LRehec2.fastq.gz**, **etc.**
 
 .. _logintohpcc:
 
