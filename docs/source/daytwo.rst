@@ -72,7 +72,7 @@ There are multiple ways with which you can access the HPCC and transfer files to
 	:align: center
 	:alt: Navigate to terminal on a Mac
 
-**2.** Type: ssh YourMSUNetID@hpcc.msu.edu
+**2.** Type: ssh ``YourMSUNetID@hpcc.msu.edu``
 
 **3.** You will then be prompted for your MSU NetID password. As you begin to type, the cursor will not show that you are entering characters, but you are. Hit the Enter/Return key at the end and you will be logged in. If this is the first time accessing the HPCC, it will send you a warning about not recognizing the RSA fingerprint. Type **yes** or **y** or whatever it needs to continue. It is okay, and necessary, to say you trust iCER to use the HPCC at MSU. If you are uncomfortable with any of this, utilize a lab or MSU computer.
 
@@ -84,7 +84,7 @@ There are multiple ways with which you can access the HPCC and transfer files to
 	:align: center
 	:alt: HPCC log in screen
 	
-**6.** Congratulations! You've logged in. Let's make a new folder here in anticipation of putting the data into it. Let's call it **RNAseq**. Please don't add any spaces. If you aren't sure how to make a new folder, scroll up a bit to the :ref: `basic-unix-coms`.
+**6.** Congratulations! You've logged in. Let's make a new folder here in anticipation of putting the data into it. Let's call it **RNAseq**. Please don't add any spaces. If you aren't sure how to make a new folder, scroll up a bit to the :ref:`basic-unix-coms`.
 
 **7.** To **log out**, type: **exit**.
 
@@ -92,7 +92,7 @@ There are multiple ways with which you can access the HPCC and transfer files to
 **Windows users:** 
 **1.** I am going to take the easy way out and `here <https://wiki.hpcc.msu.edu/display/hpccdocs/Video+Tutorial+-+Putty>`_ is a video on how to install an ssh client on Windows.
 
-**2.** Congratulations! You've logged in. Let's make a new folder here in anticipation of putting the data into it. Let's call it **RNAseq**. Please don't add any spaces. If you aren't sure how to make a new folder, scroll up a bit to the :ref: `basic-unix-coms`.
+**2.** Congratulations! You've logged in. Let's make a new folder here in anticipation of putting the data into it. Let's call it **RNAseq**. Please don't add any spaces. If you aren't sure how to make a new folder, scroll up a bit to the :ref:`basic-unix-coms`.
 
 **3.** To **log out**, type: **exit**.
 
