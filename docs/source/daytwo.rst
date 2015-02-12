@@ -3,7 +3,7 @@
 RNA-seq background information, basic Linux/Unix commands, logging into and transferring files to the HPCC, and Trimmomatic primer
 ==================================================================================================================================
 
-Let's start with downloading the data! This is going to take a *long* time, so we should start here. We will need to navigate to the `FTP server <ftp://username:password@titan.bch.msu.edu>_. I would recommend plugging into the ethernet and make sure you have at least 10 GB of space on your computer. Initiate the download by right clicking on a sample and clicking on "Save As". Save this file to your Desktop. Eventually we are going to rename this file after we have a refresher on basic Linux/Unix commands.
+Let's start with downloading the data! This is going to take a *long* time, so we should start here. We will need to navigate to the `FTP server <ftp://username:password@titan.bch.msu.edu>`_. I would recommend plugging into the ethernet and make sure you have at least 10 GB of space on your computer. Initiate the download by right clicking on a sample and clicking on "Save As". Save this file to your Desktop. Eventually we are going to rename this file after we have a refresher on basic Linux/Unix commands.
 
 Before we dig into the data and begin trimming and aligning the reads to the genome, I think it is useful to understand what happens *after you submit your RNA to the sequencing facility*. This sort of knowledge can be very useful in understanding what could potentially provide bias and any number of issues to the end dataset. In this session we will cover several things including: 
 
@@ -140,10 +140,10 @@ Let's rename the data file you just downloaded! First, we need to initiate a nam
 #. *L. reuteri* grown in the presence of commensal *E. coli* conditioned medium
 #. *L. reuteri* grown in the presence of EHEC conditioned medium
 
-For *L. reuteri* grown in LB, we will name our raw data files as **LRWT1.fastq.gz**, **LRWT2.fastq.gz**, **etc.**
-For *L. reuteri* grown in the presence of indole, we will name our raw data files as **LRindole1.fastq.gz**, **LRindole2.fastq.gz**, **etc.**
-For *L. reuteri* grown in the presence of commensal *E. coli* conditioned medium, we will name our raw data files as **LRcomm1.fastq.gz**, **LRcomm2.fastq.gz**, **etc.**
-For *L. reuteri* grown in the presence of EHEC conditioned medium, we will name our raw data files as **LRehec1.fastq.gz**, **LRehec2.fastq.gz**, **etc.**
+	* For *L. reuteri* grown in LB, we will name our raw data files as **LRWT1.fastq.gz**, **LRWT2.fastq.gz**, **etc.**
+	* For *L. reuteri* grown in the presence of indole, we will name our raw data files as **LRindole1.fastq.gz**, **LRindole2.fastq.gz**, **etc.**
+	* For *L. reuteri* grown in the presence of commensal *E. coli* conditioned medium, we will name our raw data files as **LRcomm1.fastq.gz**, **LRcomm2.fastq.gz**, **etc.**
+	* For *L. reuteri* grown in the presence of EHEC conditioned medium, we will name our raw data files as **LRehec1.fastq.gz**, **LRehec2.fastq.gz**, **etc.**
 
 .. _logintohpcc:
 
