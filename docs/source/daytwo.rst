@@ -206,8 +206,10 @@ Bowtie primer
 
 *From: http://bowtie-bio.sourceforge.net/manual.shtml#what-is-bowtie*
 
-In order for Bowtie to work, we need to provide it with the reference genome in a FASTA format file. This type of file typically ends in .fa or .fasta. 
+In order for Bowtie to work, we need to provide it with trimmed reads files and the reference genome in a FASTA format file. This type of file typically ends in .fa or .fasta. 
 
 We can acquire our favorite reference genome and feature file from the `Ensembl website <http://bacteria.ensembl.org/info/website/ftp/index.html>`_.
 
-So for our purposes, we will download the *L. reuteri* JCM1112 :download:`genome file <lreuterijcm1112.fa>` and :download:`feature file <lreuterijcm1112.gtf>`. The feature file contains data to inform Bowtie where the start and end of a gene is.
+So for our purposes, we will download the *L. reuteri* JCM1112 :download:`genome file <lreuterijcm1112.fa>` and :download:`feature file <lreuterijcm1112.gtf>`. The feature file contains data to inform HTSeq where the start and end of a gene is. This is important as HTSeq produces the number of transcripts per gene identified in a given sample. For now, please download these two files, upload them onto the HPCC, and into the RNAseq folder you generated earlier. If you have questions or issues, please place a red sticky note on your computer and I will come and help you.
+
+**Have fun!**
