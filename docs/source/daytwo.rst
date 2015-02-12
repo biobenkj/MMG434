@@ -63,11 +63,11 @@ This is an example of what a *batch effect* looks like. Note how DMSO1 and ETZ1 
 
 We can determine what is considered a "good" base call from a "bad" one through using what is known as the Phred scoring system or Q-score.
 
-Where Q is defined as a property that is logarithmically related to the base call error probability :math:`\(P**2)`:
+Where Q is defined as a property that is logarithmically related to the base call error probability:
 
 .. math::
 
-	Q = -10 \log_{10} P
+	Q = -10 \log_{10} P where P = P**2
 	
 So this means:
 
