@@ -28,7 +28,7 @@ This video does a pretty good job explaining how, in generalities the sequencing
 	
 *Adapted from: Zhernakova et al., PLoS Genetics 2013*
 
-So actually, we aren't sequencing RNA at all! We are sequencing the cDNA made from the RNA. But now, let's talk about what can add bias to the data and what we do with the data to make sure that it is reasonable to proceed to further analysis steps.
+So actually, we aren't sequencing RNA at all! We are sequencing the cDNA made from the RNA. RNA-seq is a high resolution next generation sequencing (NGS) method to assess the transcriptome of an organism and compare transcriptional changes between organisms/treatments to ascertain specific pathways/genes that are moving in response. But now, let's talk about what can add bias to the data and what we do with the data to make sure that it is reasonable to proceed to further analysis steps.
 
 But first, let's brainstorm a little bit. Look back at the RNA-seq workflow figure above and let's suggest a few places where things could potentially affect the output dataset.
 
@@ -42,6 +42,7 @@ Here are a few thoughts...
 	* During the cluster generation on the Illumina flow cell, what might happen if you have too few clusters? Too many?
 	* How is it possible to sequence many samples at one time?
 	* What if you run out of reagents from one kit and have to open another kit to finish the library preparation process?
+	* Could sequencing depth be an issue?
 	
 So now that you may be questioning the validity of any RNA-seq dataset, take heart! Many very smart people have thought about these issues and come up with ways to assess technical artifacts and correct for them. So again, let's brainstorm some potential solutions to these problems. Which problems can be addressed through better chemistries/processes vs. mathematical/computational correction?
 
@@ -54,7 +55,7 @@ Multiplexing the sequencing process by pooling several samples together is not o
 	:alt: Multiplexing samples diagram
 *From: http://www.illumina.com/content/dam/illumina-marketing/documents/products/sequencing_introduction_microbiology.pdf*
 
-This is an example of what a *batch effect* looks like.
+This is an example of what a *batch effect* looks like. Note how DMSO1 and ETZ 1 group together and DMSO2 and ETZ2 group together (e.g. by batch).
 
 .. image:: batcheffect.jpg
 	:align: center
@@ -82,7 +83,11 @@ Illumina tends to output sequence results with a Q > 30. So let's have a look at
 	:align: center
 	:alt: Raw vs trimmed alignment
 	
-This is why we do the trimming before attempting to align the reads to the reference genome.
+This is why we do the trimming before attempting to align the reads to the reference genome. Since we are using FastQC, let's have a look at some sample data of what `good Illumina data looks like <http://www.bioinformatics.babraham.ac.uk/projects/fastqc/good_sequence_short_fastqc.html>`_.
+
+So, we have come to the end of the background section. Even with all of the great tools and chemistries that have been developed to handle RNA-seq datasets, the old mantra still applies: *garbage in; garbage out* and *with great power comes great responsibility*. Take care in analyzing these sorts of data as they typically influence many downstream experiments.
+
+**Questions!**
 
 .. _basic-unix-coms:
 
