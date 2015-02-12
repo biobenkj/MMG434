@@ -112,6 +112,27 @@ There are multiple ways with which you can access the HPCC and transfer files to
 **3.** To **log out**, type: **exit**.
 
 
+**Transferring files from your machine to the HPCC using FileZilla**
+
+**1.** If you haven't already downloaded and installed `FileZilla, <https://filezilla-project.org/>`_, please do so. We want to download the **FileZilla Client** and *not* the server version.
+
+**2.** Open the application and then we will need to input a few things to get connected to the MSU HPCC. 
+
+	* Host: hpcc.msu.edu
+	* Username: Your MSU NetID
+	* Password: Your MSU NetID password
+	* Port: 22
+	* Click **Quickconnect**
+	
+**3.** Now that you are connected, you can move files from your computer (red circle) to the MSU HPCC (green circle). The connection closes if you exit out of the application.
+
+.. image:: filezillaclient.jpg
+	:align: center
+	:alt: Transfer files from local host to HPCC with FileZilla
+	
+
+
+
 .. _bowtieprimer:
 
 Bowtie primer
