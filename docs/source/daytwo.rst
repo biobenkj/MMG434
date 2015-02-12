@@ -78,7 +78,9 @@ So this means:
 
 Illumina tends to output sequence results with a Q > 30. So let's have a look at what some raw data looks like in terms of Q-scores before and after trimming adapters and low quality reads.
 
-
+.. image:: rawvstrimmedalign.jpg
+	:align: center
+	:alt: Raw vs trimmed alignment
 	
 This is why we do the trimming before attempting to align the reads to the reference genome.
 
