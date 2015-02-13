@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Assess the quality of the Bowtie alignment with FastQC and start counting gene features with HTSeq &mdash; MMG434 0.0.1 documentation</title>
+    <title>Counting gene features with HTSeq &mdash; MMG434 0.0.1 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="MMG434 0.0.1 documentation" href="index.html" />
     <link rel="next" title="Differential gene expression analysis with edgeR" href="dayfive.html" />
-    <link rel="prev" title="Align sequences with Bowtie and FastQC primer for alignment quality assessment" href="daythree.html" /> 
+    <link rel="prev" title="Align sequences with Bowtie and FastQC for alignment quality assessment" href="daythree.html" /> 
   </head>
   <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
@@ -38,7 +38,7 @@
           <a href="dayfive.html" title="Differential gene expression analysis with edgeR"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="daythree.html" title="Align sequences with Bowtie and FastQC primer for alignment quality assessment"
+          <a href="daythree.html" title="Align sequences with Bowtie and FastQC for alignment quality assessment"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">MMG434 0.0.1 documentation</a> &raquo;</li> 
       </ul>
@@ -49,9 +49,79 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="assess-the-quality-of-the-bowtie-alignment-with-fastqc-and-start-counting-gene-features-with-htseq">
-<span id="dayfour"></span><h1>Assess the quality of the Bowtie alignment with FastQC and start counting gene features with HTSeq<a class="headerlink" href="#assess-the-quality-of-the-bowtie-alignment-with-fastqc-and-start-counting-gene-features-with-htseq" title="Permalink to this headline">¶</a></h1>
-<p>Text here</p>
+  <div class="section" id="counting-gene-features-with-htseq">
+<span id="dayfour"></span><h1>Counting gene features with HTSeq<a class="headerlink" href="#counting-gene-features-with-htseq" title="Permalink to this headline">¶</a></h1>
+<p>This step will take the longest time, computationally, out of the entire workflow.</p>
+<p><a class="reference external" href="http://www-huber.embl.de/users/anders/HTSeq/doc/overview.html">HTSeq</a> is a powerful Python package for analyzing NGS data. For our purposes, we will be using the counting feature of HTSeq. Let&#8217;s have a look at the way HTSeq can <a class="reference external" href="http://www-huber.embl.de/users/anders/HTSeq/doc/count.html#count">count whether a read maps to a gene</a>.</p>
+<p>We need to supply htseq-count with a couple things:</p>
+<ol class="arabic simple">
+<li>A genome feature file (GTF) so that HTSeq &#8220;knows&#8221; where the start and end of a gene is</li>
+<li>The <em>.sam</em> file that was output from Bowtie</li>
+</ol>
+<p>To use htseq-count on the HPCC, we have to edit <a class="reference download internal" href="_downloads/alignhtseq.qsub"><code class="xref download docutils literal"><span class="pre">another</span> <span class="pre">job</span> <span class="pre">submission</span> <span class="pre">script</span></code></a>, which will look something like this:</p>
+<div class="highlight-python"><div class="highlight"><pre>#!/bin/bash -login
+#PBS -l walltime=01:20:00,nodes=1:ppn=8,mem=8gb
+#PBS -j oe
+
+#Load Numpy module
+module load NumPy
+
+#Set the number of threads to match ppn
+export MKL_NUM_THREADS=8
+
+#Load HTSeq module
+module load HTSeq
+
+#This is changing directories to the folder that you renamed that contains the aligned reads
+#In this case I have a folder called Bowtie within the RNAseq folder
+#These can be whatever you have chosen to name or rename your folders to be as long as it ends with the folder that contains the aligned reads from Bowtie
+
+cd ~/RNAseq/Bowtie/
+
+mkdir $PBS_JOBID
+cp align* ./$PBS_JOBID
+cd $PBS_JOBID
+
+
+#in order for this script to work you need to make sure that whatever the file is named, it starts with &#39;align&#39; as seen below
+#the second file is the file name that will contain the counts of the aligned reads to the genome. THIS HAS TO BE A .sam FILE!
+#every sample = 1 hour and 10 minutes of walltime
+#thus, if you have four samples, you will need to change the walltime to 04:40:00 instead of 01:10:00
+#this just makes sure that the job will complete
+#simply copy and paste each one of these commands below for each sample you want to count with HTSeq
+#it is as easy as that
+
+htseq-count -m intersection-nonempty --stranded=reverse alignLRWT1.sam alignlreuterijcm1112.gtf &gt; LRWT1map.sam 
+</pre></div>
+</div>
+<p>Thus, please download and open it in a text editor (e.g. TextEdit or Notepad; <strong>not Microsoft Word</strong>).</p>
+<p>The part that you will want to change is the line that <strong>starts with the word &#8220;htseq-count&#8221;</strong>. In this line, we are doing several things:</p>
+<ol class="arabic simple">
+<li>We are calling <strong>htseq-count</strong></li>
+<li>Specifying which mode we want to use for HTSeq to count a read mapping to a gene with the <strong>-m intersection-nonempty</strong></li>
+<li>Stating that the information it can expect is the reverse strand information with <strong>&#8211;stranded=reverse</strong> (this comes from the kit used to prepare the libraries)</li>
+<li>Providing the <em>.sam</em> input (please change this file name to your appropriate sample name)</li>
+<li>Providing the <strong>GTF</strong> file</li>
+<li>We are telling HTSeq to output the data with the <strong>&gt;</strong> and write it to a file called <strong>LRWT1map.sam</strong> (please change this output file name to your appropriate sample name and making sure it ends in <em>map.sam</em> like the example)</li>
+</ol>
+<p><strong>Submitting the job to the HPCC</strong></p>
+<p>Now we will use the job submission script you just edited to submit the HTSeq job.</p>
+<ol class="arabic simple">
+<li>Log in to the HPCC (if you aren&#8217;t sure how to do this, refer to <a class="reference internal" href="daytwo.html"><em>RNA-seq background information, basic Linux/Unix commands, logging into and transferring files to the HPCC, and Trimmomatic</em></a>.)</li>
+<li>Load the <em>powertools</em> module (if you aren&#8217;t sure how to do this, refer back to the commands listed in <a class="reference internal" href="daytwo.html"><em>RNA-seq background information, basic Linux/Unix commands, logging into and transferring files to the HPCC, and Trimmomatic</em></a>.)</li>
+<li>Log in to the intel10 compute node by typing: <strong>intel10</strong> and then hit Enter/Return</li>
+<li>Edit the name of the folder that your Bowtie job put all the output in to <strong>Bowtie</strong> (e.g. Type: mv BowtieJobOutputLongListOfNumbers Bowtie) - tab auto-complete helps here :)</li>
+<li>Submit the job by navigating to your RNAseq folder and then the Bowtie folder you just renamed and typing: <strong>qsub alignhtseq.qsub</strong> and then hit Enter/Return</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><strong>BEFORE</strong> you submit the job, make sure you are 1) in the Bowtie folder and 2) the <em>.sam</em> file, the .qsub file, and feature file (.gtf) file are all there.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To check the status of your job, simply type: <strong>sj</strong> (short for &#8220;show job&#8221;) and hit Enter/Return. This command is <em>only</em> possible though if you have the <strong>powertools</strong> module loaded.</p>
+</div>
+<p><strong>Questions! We have about an hour for this to run, so now might be a good time to start writing up your report on the progress you&#8217;ve made so far.</strong></p>
 </div>
 
 
@@ -62,7 +132,7 @@
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
   <p class="topless"><a href="daythree.html"
-                        title="previous chapter">Align sequences with Bowtie and FastQC primer for alignment quality assessment</a></p>
+                        title="previous chapter">Align sequences with Bowtie and FastQC for alignment quality assessment</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="dayfive.html"
                         title="next chapter">Differential gene expression analysis with edgeR</a></p>
@@ -100,7 +170,7 @@
           <a href="dayfive.html" title="Differential gene expression analysis with edgeR"
              >next</a> |</li>
         <li class="right" >
-          <a href="daythree.html" title="Align sequences with Bowtie and FastQC primer for alignment quality assessment"
+          <a href="daythree.html" title="Align sequences with Bowtie and FastQC for alignment quality assessment"
              >previous</a> |</li>
         <li><a href="index.html">MMG434 0.0.1 documentation</a> &raquo;</li> 
       </ul>
