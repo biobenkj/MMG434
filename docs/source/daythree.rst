@@ -7,7 +7,7 @@ Today we will be covering two things:
 
 #. :ref:`bowtie`
 
-#. :ref:`fastqc`
+#. :ref:`fastqcdaythree`
 
 .. _bowtie:
 
@@ -75,7 +75,14 @@ Now we will use the job submission script you just edited to submit the Bowtie j
 
 **Questions!**
 
-.. _fastqc:
+.. _fastqcdaythree:
 
 FastQC
 ------
+
+While Bowtie is running, let's open up FastQC and have a look again at what `good Illumina data <http://www.bioinformatics.babraham.ac.uk/projects/fastqc/good_sequence_short_fastqc.html>`_ and `bad Illumina data <http://www.bioinformatics.babraham.ac.uk/projects/fastqc/bad_sequence_fastqc.html>`_ look like. This will help us determine the quality of our own sequence based on their examples.
+
+Now, let's look at the `FastQC documentation <http://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/>`_ to see how to run our samples. 
+
+Everyone, have a look at the status at their Bowtie submission and see if it is in the queue/running/completed. If your job is running or completed, place a green sticky note on their computer. If not, place a red stick note on their computer.
+
