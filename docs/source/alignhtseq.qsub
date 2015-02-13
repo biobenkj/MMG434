@@ -1,0 +1,39 @@
+#!/bin/bash -login
+#PBS -l walltime=010:20:00,nodes=1:ppn=8,mem=8gb
+#PBS -j oe
+
+#Load Numpy module
+module load NumPy
+
+#Set the number of threads to match ppn
+export MKL_NUM_THREADS=8
+
+#Load HTSeq module
+module load HTSeq
+
+#This is changing directories to the folder that you renamed that contains the aligned reads
+#In this case I have a folder called Bowtie within the RNAseq folder
+#These can be whatever you have chosen to name or rename your folders to be as long as it ends with the folder that contains the aligned reads from Bowtie
+cd ~/ETZreseq/Bowtie/
+
+mkdir $PBS_JOBID
+cp align* ./$PBS_JOBID
+cd $PBS_JOBID
+
+#the items to change in the script below is the 'alignDMSO-57-2.sam' section and the subsequent 'D6DMSOmap2.sam'
+#the first file name is the name of the aligned RNAseq reads from the sample 'alignDMSO-57-2' and the second file is the output that will be a text file that contains the counts of each read that mapped to a particular gene
+#in order for this script to work you need to make sure that whatever the file is named, it starts with 'align' as seen below
+#the second file is the file name that will contain the counts of the aligned reads to the genome. THIS HAS TO BE A .sam FILE!
+#every sample = 1 hour and 10 minutes of walltime
+#thus, if you have four samples, you will need to change the walltime to 04:40:00 instead of 02:20:00
+#this just makes sure that the job will complete
+#simply copy and paste each one of these commands below for each sample you want to count with HTSeq
+#it is as easy as that
+htseq-count -m intersection-nonempty --stranded=reverse alignDMSO7A.sam alignMtbCDC1551.gtf > DMSO7Amap.sam 
+htseq-count -m intersection-nonempty --stranded=reverse alignDMSO7B.sam alignMtbCDC1551.gtf > DMSO7Bmap.sam
+htseq-count -m intersection-nonempty --stranded=reverse alignDMSO5A.sam alignMtbCDC1551.gtf > DMSO5Amap.sam
+htseq-count -m intersection-nonempty --stranded=reverse alignDMSO5B.sam alignMtbCDC1551.gtf > DMSO5Bmap.sam
+htseq-count -m intersection-nonempty --stranded=reverse alignETZ5A.sam alignMtbCDC1551.gtf > ETZ5Amap.sam
+htseq-count -m intersection-nonempty --stranded=reverse alignETZ5B.sam alignMtbCDC1551.gtf > ETZ5Bmap.sam
+htseq-count -m intersection-nonempty --stranded=reverse alignPhoPTn5A.sam alignMtbCDC1551.gtf > PhoPTn5Amap.sam
+htseq-count -m intersection-nonempty --stranded=reverse alignPhoPTn5B.sam alignMtbCDC1551.gtf > PhoPTn5Bmap.sam

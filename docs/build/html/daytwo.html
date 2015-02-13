@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>RNA-seq background information, basic Linux/Unix commands, and Bowtie primer &mdash; MMG434 0.0.1 documentation</title>
+    <title>RNA-seq background information, basic Linux/Unix commands, logging into and transferring files to the HPCC, and Trimmomatic &mdash; MMG434 0.0.1 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -49,14 +49,15 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="rna-seq-background-information-basic-linux-unix-commands-and-bowtie-primer">
-<span id="daytwo"></span><h1>RNA-seq background information, basic Linux/Unix commands, and Bowtie primer<a class="headerlink" href="#rna-seq-background-information-basic-linux-unix-commands-and-bowtie-primer" title="Permalink to this headline">¶</a></h1>
-<p>Before we really dig into the data and begin trimming and aligning the reads to the genome, I think it is useful to understand what happens <em>after you submit your RNA to the sequencing facility</em>. This sort of knowledge can be very useful in understanding what could potentially provide bias and any number of issues to the end dataset. In this session we will cover several things including:</p>
+  <div class="section" id="rna-seq-background-information-basic-linux-unix-commands-logging-into-and-transferring-files-to-the-hpcc-and-trimmomatic">
+<span id="daytwo"></span><h1>RNA-seq background information, basic Linux/Unix commands, logging into and transferring files to the HPCC, and Trimmomatic<a class="headerlink" href="#rna-seq-background-information-basic-linux-unix-commands-logging-into-and-transferring-files-to-the-hpcc-and-trimmomatic" title="Permalink to this headline">¶</a></h1>
+<p>Let&#8217;s start with downloading the data! This is going to take a <em>long</em> time, so we should start here. We will need to navigate to the <a class="reference external" href="ftp://username:password&#64;titan.bch.msu.edu">FTP server</a>. I would recommend plugging into the ethernet and make sure you have at least 10 GB of space on your computer. Initiate the download by right clicking on a sample and clicking on &#8220;Save As&#8221;. Save this file to your Desktop. Eventually we are going to rename this file after we have a refresher on basic Linux/Unix commands.</p>
+<p>Before we dig into the data and begin trimming and aligning the reads to the genome, I think it is useful to understand what happens <em>after you submit your RNA to the sequencing facility</em>. This sort of knowledge can be very useful in understanding what could potentially provide bias and any number of issues to the end dataset. In this session we will cover several things including:</p>
 <ol class="arabic simple">
 <li><a class="reference internal" href="#rnaseqbackground"><em>RNA-seq background information</em></a></li>
 <li><a class="reference internal" href="#basic-unix-coms"><em>Basic Linux/Unix commands</em></a></li>
 <li><a class="reference internal" href="#logintohpcc"><em>Logging into and transferring files to the MSU HPCC</em></a></li>
-<li><a class="reference internal" href="#bowtieprimer"><em>Bowtie primer</em></a></li>
+<li><a class="reference internal" href="#trimmomatic"><em>Trimmomatic</em></a></li>
 </ol>
 <div class="section" id="rna-seq-background-information">
 <span id="rnaseqbackground"></span><h2>RNA-seq background information<a class="headerlink" href="#rna-seq-background-information" title="Permalink to this headline">¶</a></h2>
@@ -88,9 +89,9 @@
 <p>This is an example of what a <em>batch effect</em> looks like. Note how DMSO1 and ETZ1 group together and DMSO2 and ETZ2 group together (e.g. by batch).</p>
 <img alt="Batch effect example" class="align-center" src="_images/batcheffect.jpg" />
 <p>We can determine what is considered a &#8220;good&#8221; base call from a &#8220;bad&#8221; one through using what is known as the Phred scoring system or Q-score.</p>
-<p>Where Q is defined as a property that is logarithmically related to the base call error probability (P):</p>
+<p>Where Q is defined as a property that is logarithmically related to the base call error probability:</p>
 <div class="math">
-<p><span class="math">Q = -10 \log_{10} P</span></p>
+<p><span class="math">Q = -10 \log_{10} P\ |\ error\ probability = P^2</span></p>
 </div><p>So this means:</p>
 <img alt="Phred scoring table" class="align-center" src="_images/basecall.jpg" />
 <p><em>From: http://res.illumina.com/documents/products/technotes/technote_q-scores.pdf</em></p>
@@ -159,6 +160,18 @@
 <p><strong>Command reference sheet</strong></p>
 <img alt="Linux/Unix command list" class="align-center" src="_images/linuxcoms.jpg" />
 <p><em>Ref. sheet from: http://files.fosswire.com/2007/08/fwunixref.pdf</em></p>
+<p>Let&#8217;s rename the data file you just downloaded! First, we need to initiate a naming convention for the data. Having a consistent and meaningful naming convention for your data will make it much easier for you and anyone else attempting to work with your data.</p>
+<p><strong>We have four conditions:</strong></p>
+<ol class="arabic simple">
+<li><em>L. reuteri</em> grown in LB</li>
+<li><em>L. reuteri</em> grown in the presence of indole</li>
+<li><em>L. reuteri</em> grown in the presence of commensal <em>E. coli</em> conditioned medium</li>
+<li><em>L. reuteri</em> grown in the presence of EHEC conditioned medium</li>
+</ol>
+<p>For <em>L. reuteri</em> grown in LB, we will name our raw data files as <strong>LRWT1.fastq.gz</strong>, <strong>LRWT2.fastq.gz</strong>, <strong>etc.</strong></p>
+<p>For <em>L. reuteri</em> grown in the presence of indole, we will name our raw data files as <strong>LRindole1.fastq.gz</strong>, <strong>LRindole2.fastq.gz</strong>, <strong>etc.</strong></p>
+<p>For <em>L. reuteri</em> grown in the presence of commensal <em>E. coli</em> conditioned medium, we will name our raw data files as <strong>LRcomm1.fastq.gz</strong>, <strong>LRcomm2.fastq.gz</strong>, <strong>etc.</strong></p>
+<p>For <em>L. reuteri</em> grown in the presence of EHEC conditioned medium, we will name our raw data files as <strong>LRehec1.fastq.gz</strong>, <strong>LRehec2.fastq.gz</strong>, <strong>etc.</strong></p>
 </div>
 <div class="section" id="logging-into-and-transferring-files-to-the-msu-hpcc">
 <span id="logintohpcc"></span><h2>Logging into and transferring files to the MSU HPCC<a class="headerlink" href="#logging-into-and-transferring-files-to-the-msu-hpcc" title="Permalink to this headline">¶</a></h2>
@@ -192,9 +205,35 @@
 <p><strong>3.</strong> Now that you are connected, you can move files from your computer (red circle) to the MSU HPCC (green circle) and vice versa, simply by double clicking the file. The connection closes if you exit out of the application.</p>
 <img alt="Transfer files from local host to HPCC with FileZilla" class="align-center" src="_images/filezillaclient.jpg" />
 </div>
-<div class="section" id="bowtie-primer">
-<span id="bowtieprimer"></span><h2>Bowtie primer<a class="headerlink" href="#bowtie-primer" title="Permalink to this headline">¶</a></h2>
-<p>Text</p>
+<div class="section" id="trimmomatic">
+<span id="id3"></span><h2>Trimmomatic<a class="headerlink" href="#trimmomatic" title="Permalink to this headline">¶</a></h2>
+<p>Trimmomatic is a lightweight java application that can remove Illumina adapter sequences and low quality reads. It uses a sliding window to analyze chunks of each read, examining the quality score, minimum read length, if it corresponds to an adapter sequence, etc. Let&#8217;s have a look at the <a class="reference external" href="http://www.usadellab.org/cms/index.php?page=trimmomatic">documentation</a> to see what each option does.</p>
+<p>To run this application, you have to run it from the command line (e.g. the terminal). If you are a Windows user, you might find it easier to use the Powershell instead of the default command line. To see if you have Powershell, search your computer for it. It recognizes most of the commands listed above whereas the normal Windows terminal does not.</p>
+<p><strong>1.</strong> Navigate to your desktop by typing: <strong>cd ~/Desktop</strong> and hit the Enter/Return key. This should bring you to your desktop directory.</p>
+<p><strong>2.</strong> Type: <strong>ls</strong> to list the contents of your Desktop directory. Check and make sure that you have your raw data file (that has since been renamed) and the Trimmomatic directory that we put there previously.</p>
+<p><strong>3.</strong> Navigate to the Trimmomatic directory by typing: <strong>cd</strong> Trimmomatic and then hit the Tab key. This should auto-complete the name of the directory for you. Tab auto-complete is fantastic for filling in the name of a file for you if you don&#8217;t remember the exact name. Pretty neat, huh?!</p>
+<p><strong>4.</strong> Now, let&#8217;s make sure you have Java installed. Type: <strong>java</strong> and hit Enter/Return. The result should be a list of commands trying to help you use Java. If you get an error, let me know.</p>
+<p><strong>5.</strong> At this point, let&#8217;s try and trim your data file.</p>
+<p><strong>6.</strong> Copy and paste this into your terminal: java -jar ~/Desktop/Trimmomatic-0.32/trimmomatic-0.32.jar SE -phred33 ~/Desktop/NameOfSample.fastq.gz ~/Desktop/NewFileNameForTrimmedSample.fastq ILLUMINACLIP:TruSeq3-SE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Read through this command and change the portions that say <strong>NameOfSample.fastq.gz</strong> and <strong>NewFileNameForTrimmedSample.fastq</strong>. <strong>DO NOT ADD SPACES IN YOUR FILE NAMES</strong></p>
+</div>
+<p>To continue our naming convention please name the <strong>NewFileNameForTrimmedSample.fastq</strong> as the following:</p>
+<p>For <em>L. reuteri</em> grown in LB, we will name our raw data files as <strong>trimmedLRWT1.fastq</strong>, <strong>trimmedLRWT2.fastq</strong>, <strong>etc.</strong></p>
+<p>For <em>L. reuteri</em> grown in the presence of indole, we will name our raw data files as <strong>trimmedLRindole1.fastq</strong>, <strong>trimmedLRindole2.fastq</strong>, <strong>etc.</strong></p>
+<p>For <em>L. reuteri</em> grown in the presence of commensal <em>E. coli</em> conditioned medium, we will name our raw data files as <strong>trimmedLRcomm1.fastq</strong>, <strong>trimmedLRcomm2.fastq</strong>, <strong>etc.</strong></p>
+<p>For <em>L. reuteri</em> grown in the presence of EHEC conditioned medium, we will name our raw data files as <strong>trimmedLRehec1.fastq</strong>, <strong>trimmedLRehec2.fastq</strong>, <strong>etc.</strong></p>
+<p>Adding the word <strong>trimmed</strong> in front of the filename is important for the alignment steps done in Bowtie.</p>
+<p><strong>7.</strong> After you&#8217;ve added the appropriate file names into the command, hit Enter/Return. It will run for a little while and then produce some output like this:</p>
+<p>TrimmomaticSE: Started with arguments: -phred33 /Volumes/Abramovitch Lab/RNAseq/Jake/1Gly7A_CGATGT_L008_R1_001.fastq.gz /Volumes/Abramovitch Lab/RNAseq/Jake/Trimmomatic/1Gly7Atrimmed.fq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+Using Long Clipping Sequence: &#8216;AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA&#8217;
+Using Long Clipping Sequence: &#8216;AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC&#8217;
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Input Reads: 29294470 Surviving: 28401299 (96.95%) Dropped: 893171 (3.05%)
+TrimmomaticSE: Completed successfully</p>
+<p><strong>8.</strong> Copy this output into a text file somewhere and save it. You might want this for a report when you&#8217;re finished.</p>
+<p><strong>Have fun! Let me know if you have questions by placing a red sticky note on your computer.</strong></p>
 </div>
 </div>
 
@@ -206,11 +245,11 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">RNA-seq background information, basic Linux/Unix commands, and Bowtie primer</a><ul>
+<li><a class="reference internal" href="#">RNA-seq background information, basic Linux/Unix commands, logging into and transferring files to the HPCC, and Trimmomatic</a><ul>
 <li><a class="reference internal" href="#rna-seq-background-information">RNA-seq background information</a></li>
 <li><a class="reference internal" href="#basic-linux-unix-commands">Basic Linux/Unix commands</a></li>
 <li><a class="reference internal" href="#logging-into-and-transferring-files-to-the-msu-hpcc">Logging into and transferring files to the MSU HPCC</a></li>
-<li><a class="reference internal" href="#bowtie-primer">Bowtie primer</a></li>
+<li><a class="reference internal" href="#trimmomatic">Trimmomatic</a></li>
 </ul>
 </li>
 </ul>

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Align sequences with Bowtie and FastQC primer for alignment quality assessment &mdash; MMG434 0.0.1 documentation</title>
+    <title>Align sequences with Bowtie and FastQC for alignment quality assessment &mdash; MMG434 0.0.1 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="MMG434 0.0.1 documentation" href="index.html" />
     <link rel="next" title="Assess the quality of the Bowtie alignment with FastQC and start counting gene features with HTSeq" href="dayfour.html" />
-    <link rel="prev" title="RNA-seq background information, basic Linux/Unix commands, and Bowtie primer" href="daytwo.html" /> 
+    <link rel="prev" title="RNA-seq background information, basic Linux/Unix commands, logging into and transferring files to the HPCC, and Trimmomatic" href="daytwo.html" /> 
   </head>
   <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
@@ -38,7 +38,7 @@
           <a href="dayfour.html" title="Assess the quality of the Bowtie alignment with FastQC and start counting gene features with HTSeq"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="daytwo.html" title="RNA-seq background information, basic Linux/Unix commands, and Bowtie primer"
+          <a href="daytwo.html" title="RNA-seq background information, basic Linux/Unix commands, logging into and transferring files to the HPCC, and Trimmomatic"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">MMG434 0.0.1 documentation</a> &raquo;</li> 
       </ul>
@@ -49,9 +49,82 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="align-sequences-with-bowtie-and-fastqc-primer-for-alignment-quality-assessment">
-<span id="daythree"></span><h1>Align sequences with Bowtie and FastQC primer for alignment quality assessment<a class="headerlink" href="#align-sequences-with-bowtie-and-fastqc-primer-for-alignment-quality-assessment" title="Permalink to this headline">¶</a></h1>
-<p>Text here</p>
+  <div class="section" id="align-sequences-with-bowtie-and-fastqc-for-alignment-quality-assessment">
+<span id="daythree"></span><h1>Align sequences with Bowtie and FastQC for alignment quality assessment<a class="headerlink" href="#align-sequences-with-bowtie-and-fastqc-for-alignment-quality-assessment" title="Permalink to this headline">¶</a></h1>
+<p>Today we will be covering two things:</p>
+<ol class="arabic simple">
+<li><a class="reference internal" href="#bowtie"><em>Bowtie</em></a></li>
+<li><a class="reference internal" href="#fastqc"><em>FastQC</em></a></li>
+</ol>
+<div class="section" id="bowtie">
+<span id="id1"></span><h2>Bowtie<a class="headerlink" href="#bowtie" title="Permalink to this headline">¶</a></h2>
+<p>Before we can align the trimmed sequences that we did yesterday, we need to first upload that file to the HPCC. Please use FileZilla and begin uploading that file to the <strong>RNAseq</strong> folder on the HPCC. If you aren&#8217;t sure how to do that, refer back to <a class="reference internal" href="daytwo.html"><em>RNA-seq background information, basic Linux/Unix commands, logging into and transferring files to the HPCC, and Trimmomatic</em></a>.</p>
+<p><strong>What is Bowtie?</strong></p>
+<p>&#8220;Bowtie is an ultrafast, memory-efficient short read aligner geared toward quickly aligning large sets of short DNA sequences (reads) to large genomes... Bowtie indexes the genome with a <a class="reference external" href="http://en.wikipedia.org/wiki/Burrows%E2%80%93Wheeler_transform">Burrows-Wheeler</a> index to keep its memory footprint small...&#8221;</p>
+<p><strong>What isn&#8217;t Bowtie?</strong></p>
+<p>&#8220;Bowtie is not a general-purpose alignment tool like MUMer, BLAST, or Vmatch. Bowtie works best when aligning short reads to large genomes, though it supports arbitrarily small reference sequences (e.g. amplicons) and reads as long as 1024 bases. Bowtie is designed to be extremely fast for sets of short reads where (a) many of the reads have at least one good, valid alignment, (b) many of the reads are relatively high-quality, and (c) the number of alignments reported per read is small (close to 1).&#8221;</p>
+<p><em>From: http://bowtie-bio.sourceforge.net/manual.shtml#what-is-bowtie</em></p>
+<p>In order for Bowtie to work, we need to provide it with trimmed reads files and the reference genome in a FASTA format file. This type of file typically ends in .fa or .fasta.</p>
+<p>We can acquire our favorite reference genome and feature file (GTF) from the <a class="reference external" href="http://bacteria.ensembl.org/info/website/ftp/index.html">Ensembl website</a>.</p>
+<p>So for our purposes, we will download the <em>L. reuteri</em> JCM1112 <a class="reference download internal" href="_downloads/trimmedlreuterijcm1112.fa"><code class="xref download docutils literal"><span class="pre">genome</span> <span class="pre">file</span></code></a> and <a class="reference download internal" href="_downloads/alignlreuterijcm1112.gtf"><code class="xref download docutils literal"><span class="pre">feature</span> <span class="pre">file</span></code></a>. The feature file contains data to inform HTSeq where the start and end of a gene is. This is important as HTSeq produces the number of transcripts per gene identified in a given sample. For now, please download these two files, upload them onto the HPCC, and into the RNAseq folder you generated earlier. If you have questions or issues, please place a red sticky note on your computer and I will come and help you.</p>
+<p>We also need to do a little script editing to make sure that the HPCC and Bowtie do what we want them to do. So please download the <a class="reference download internal" href="_downloads/trimmedbowtie.qsub"><code class="xref download docutils literal"><span class="pre">Bowtie</span> <span class="pre">qsub</span> <span class="pre">file</span></code></a> and open it in a text editor (e.g. TextEdit or Notepad; <strong>not Microsoft Word</strong>).</p>
+<p>The document will look something like this (take a minute and read through it and see if you understand what is going on):</p>
+<div class="highlight-python"><div class="highlight"><pre>#!/bin/bash -login
+#PBS -l walltime=00:20:00,nodes=1:ppn=8,mem=8gb
+#PBS -j oe
+
+cd $PBS_O_WORKDIR
+module load bowtie 
+
+mkdir $PBS_JOBID
+cp trimmed* ./$PBS_JOBID
+cd $PBS_JOBID
+
+bowtie-build trimmedlreuterijcm1112.fa trimmedlreuterijcm1112
+
+#ppn above should be 1 larger than -p below (thus if ppn=8 up top, the number after &#39;-p&#39; below should be one less)
+#the first file name is the name of the trimmed RNAseq read data that comes from Trimmomatic
+#in order for this script to work you need to make sure that whatever the file is named, it starts with &#39;trimmed&#39; as seen below
+#the second file is the file name that will contain the alignment of the reads to the genome. THIS HAS TO BE A .sam FILE!
+#every sample = 20 minutes of walltime
+#thus, if you have four samples, you will need to change the walltime to 00:80:00 instead of 00:20:00
+#this just makes sure that the job will complete
+#simply copy and paste each one of these commands below for each sample you want to align with bowtie
+#it is as easy as that
+
+time bowtie -S -p 7 trimmedlreuterijcm1112 trimmedLRWT1.fastq &gt; alignLRWT1.sam
+
+#Do not do anything below this line-leave it as is
+rm *.fastq
+</pre></div>
+</div>
+<p>The part that you will want to change is the line that <strong>starts with the word &#8220;time&#8221;</strong>. In this line, we are doing several things:</p>
+<ol class="arabic simple">
+<li>We are initiating Bowtie with the command <strong>bowtie</strong></li>
+<li>We are asking Bowtie to output the alignment results as <em>.sam</em> files by raising the <strong>-S</strong> flag</li>
+<li>We are telling Bowtie to use 8 processors by raising the <strong>-p</strong> flag and specifying the number <strong>7</strong></li>
+<li>We are telling Bowtie to use the <em>indexed genome</em> that was built earlier in the code by specifying <strong>trimmedlreuterijcm1112</strong></li>
+<li>The input is specified by giving the <strong>trimmedLRWT1.fastq</strong></li>
+<li>We are telling Bowtie to output the data with the <strong>&gt;</strong> and write it to a file called <strong>alignLRWT1.sam</strong></li>
+</ol>
+<p>You will need to change the filenames as identified in <strong>5</strong> and <strong>6</strong> to your appropriate sample file name. Once this is done, save the file and then upload it and the genome file (<strong>trimmedlreuterijcm1112.fa</strong>) to the <strong>RNAseq</strong> folder on the HPCC using FileZilla.</p>
+<p>Once you have completed this task, please place a green sticky note on your computer. If you are having any issues, please put a red sticky note on your computer and I will come help you.</p>
+<p><strong>Submitting the job to the HPCC</strong></p>
+<p>Now we will use the job submission script you just edited to submit the Bowtie job.</p>
+<ol class="arabic simple">
+<li>Log in to the HPCC (if you aren&#8217;t sure how to do this, refer to <a class="reference internal" href="daytwo.html"><em>RNA-seq background information, basic Linux/Unix commands, logging into and transferring files to the HPCC, and Trimmomatic</em></a>.)</li>
+<li>Load the <em>powertools</em> module (if you aren&#8217;t sure how to do this, refer back to the commands listed in <a class="reference internal" href="daytwo.html"><em>RNA-seq background information, basic Linux/Unix commands, logging into and transferring files to the HPCC, and Trimmomatic</em></a>.)</li>
+<li>Log in to the intel10 compute node by typing: <strong>intel10</strong> and then hit Enter/Return</li>
+<li>Submit the job by navigating to your RNAseq folder and then typing: <strong>qsub trimmedbowtie.qsub</strong> and then hit Enter/Return</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><strong>BEFORE</strong> you submit the job, make sure you are 1) in the RNAseq folder and 2) the sequence file, the .qsub file, and genome (.fa) file are all there.</p>
+</div>
+</div>
+<div class="section" id="fastqc">
+<span id="id2"></span><h2>FastQC<a class="headerlink" href="#fastqc" title="Permalink to this headline">¶</a></h2>
+</div>
 </div>
 
 
@@ -60,9 +133,18 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Align sequences with Bowtie and FastQC for alignment quality assessment</a><ul>
+<li><a class="reference internal" href="#bowtie">Bowtie</a></li>
+<li><a class="reference internal" href="#fastqc">FastQC</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="daytwo.html"
-                        title="previous chapter">RNA-seq background information, basic Linux/Unix commands, and Bowtie primer</a></p>
+                        title="previous chapter">RNA-seq background information, basic Linux/Unix commands, logging into and transferring files to the HPCC, and Trimmomatic</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="dayfour.html"
                         title="next chapter">Assess the quality of the Bowtie alignment with FastQC and start counting gene features with HTSeq</a></p>
@@ -100,7 +182,7 @@
           <a href="dayfour.html" title="Assess the quality of the Bowtie alignment with FastQC and start counting gene features with HTSeq"
              >next</a> |</li>
         <li class="right" >
-          <a href="daytwo.html" title="RNA-seq background information, basic Linux/Unix commands, and Bowtie primer"
+          <a href="daytwo.html" title="RNA-seq background information, basic Linux/Unix commands, logging into and transferring files to the HPCC, and Trimmomatic"
              >previous</a> |</li>
         <li><a href="index.html">MMG434 0.0.1 documentation</a> &raquo;</li> 
       </ul>

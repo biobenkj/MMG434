@@ -1,0 +1,26 @@
+#!/bin/bash -login
+#PBS -l walltime=00:20:00,nodes=1:ppn=8,mem=8gb
+#PBS -j oe
+
+cd $PBS_O_WORKDIR
+module load bowtie 
+
+mkdir $PBS_JOBID
+cp trimmed* ./$PBS_JOBID
+cd $PBS_JOBID
+
+bowtie-build trimmedlreuterijcm1112.fa trimmedlreuterijcm1112
+
+#ppn above should be 1 larger than -p below (thus if ppn=8 up top, the number after '-p' below should be one less)
+#the first file name is the name of the trimmed RNAseq read data that comes from Trimmomatic
+#in order for this script to work you need to make sure that whatever the file is named, it starts with 'trimmed' as seen below
+#the second file is the file name that will contain the alignment of the reads to the genome. THIS HAS TO BE A .sam FILE!
+#every sample = 20 minutes of walltime
+#thus, if you have four samples, you will need to change the walltime to 00:80:00 instead of 00:20:00
+#this just makes sure that the job will complete
+#simply copy and paste each one of these commands below for each sample you want to align with bowtie
+#it is as easy as that
+
+time bowtie -S -p 7 trimmedlreuterijcm1112 trimmedLRWT1.fastq > alignLRWT1.sam
+
+#Do not do anything below this line-leave it as isrm *.fastq
