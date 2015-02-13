@@ -7,7 +7,7 @@ Today we will be covering two things:
 
 #. :ref:`bowtie`
 
-#. :ref:`fastqcdaythree`
+#. :ref:`dthreefqc`
 
 .. _bowtie:
 
@@ -75,14 +75,25 @@ Now we will use the job submission script you just edited to submit the Bowtie j
 
 **Questions!**
 
-.. _fastqcdaythree:
+.. _dthreefqc:
 
 FastQC
 ------
 
 While Bowtie is running, let's open up FastQC and have a look again at what `good Illumina data <http://www.bioinformatics.babraham.ac.uk/projects/fastqc/good_sequence_short_fastqc.html>`_ and `bad Illumina data <http://www.bioinformatics.babraham.ac.uk/projects/fastqc/bad_sequence_fastqc.html>`_ look like. This will help us determine the quality of our own sequence based on their examples.
 
-Now, let's look at the `FastQC documentation <http://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/>`_ to see how to run our samples. 
+Now, let's look at the `FastQC documentation <http://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/>`_ to see how to run our samples. In general, you go to **File** -> **Open** -> **Your .sam output from Bowtie**. 
 
-Everyone, have a look at the status at their Bowtie submission and see if it is in the queue/running/completed. If your job is running or completed, place a green sticky note on their computer. If not, place a red stick note on their computer.
+Everyone, have a look at the status at their Bowtie submission and see if it is in the queue/running/completed. If your job is running or completed, place a green sticky note on their computer. If not, place a red sticky note on their computer.
 
+If your job has completed, please use FileZilla to download the *.sam* file to your desktop. Once this is done, please take your green sticky not *off* your computer.
+
+.. note:: If you are running out of room on your computer with the sequence data, upload the raw (untrimmed data) to the HPCC. Now, both the raw and trimmed data are off your computer and on the HPCC, allowing you to delete both of these files from your computer.
+
+Once your *.sam* file has downloaded to your desktop, please start the FastQC analysis. This will take a few minutes and you should see some output stating that it is analyzing an increasing number of reads. Once it is done, have a look over the report and then find your other classmates who analyzed the same treatment group. To identify yourself, write the treatment name on your green sticky note and place it on your computer. Get together and compare reports.
+
+**Presentation time!**
+
+Please have one person from each treatment group come and present a *representative* report from each treatment, assessing the results.
+
+.. note:: Save your report so that we can compile them at the end of the module.

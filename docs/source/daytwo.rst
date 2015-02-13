@@ -13,7 +13,7 @@ Before we dig into the data and begin trimming and aligning the reads to the gen
 
 #. :ref:`logintohpcc`
 
-#. :ref:`trimmomaticdaytwo`
+#. :ref:`dtwotrim`
 
 .. _rnaseqbackground:
 
@@ -211,7 +211,7 @@ There are multiple ways with which you can access the HPCC and transfer files to
 
 
 	
-.. _trimmomaticdaytwo:
+.. _dtwotrim:
 
 Trimmomatic
 -----------

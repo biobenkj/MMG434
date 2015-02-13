@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="MMG434 0.0.1 documentation" href="index.html" />
-    <link rel="next" title="Align sequences with Bowtie and FastQC primer for alignment quality assessment" href="daythree.html" />
+    <link rel="next" title="Align sequences with Bowtie and FastQC for alignment quality assessment" href="daythree.html" />
     <link rel="prev" title="Install software and make sure everyone is on the same page" href="dayone.html" /> 
   </head>
   <body role="document">
@@ -35,7 +35,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="daythree.html" title="Align sequences with Bowtie and FastQC primer for alignment quality assessment"
+          <a href="daythree.html" title="Align sequences with Bowtie and FastQC for alignment quality assessment"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="dayone.html" title="Install software and make sure everyone is on the same page"
@@ -57,7 +57,7 @@
 <li><a class="reference internal" href="#rnaseqbackground"><em>RNA-seq background information</em></a></li>
 <li><a class="reference internal" href="#basic-unix-coms"><em>Basic Linux/Unix commands</em></a></li>
 <li><a class="reference internal" href="#logintohpcc"><em>Logging into and transferring files to the MSU HPCC</em></a></li>
-<li><a class="reference internal" href="#trimmomatic"><em>Trimmomatic</em></a></li>
+<li><a class="reference internal" href="#dtwotrim"><em>Trimmomatic</em></a></li>
 </ol>
 <div class="section" id="rna-seq-background-information">
 <span id="rnaseqbackground"></span><h2>RNA-seq background information<a class="headerlink" href="#rna-seq-background-information" title="Permalink to this headline">¶</a></h2>
@@ -191,7 +191,7 @@
 <p><strong>2.</strong> Congratulations! You&#8217;ve logged in. Let&#8217;s make a new folder here in anticipation of putting the data into it. Let&#8217;s call it <strong>RNAseq</strong>. Please don&#8217;t add any spaces. If you aren&#8217;t sure how to make a new folder, scroll up a bit to the <a class="reference internal" href="#basic-unix-coms"><em>Basic Linux/Unix commands</em></a>.</p>
 <p><strong>3.</strong> To <strong>log out</strong>, type: <strong>exit</strong>.</p>
 <p><strong>Transferring files from your machine to the HPCC using FileZilla</strong></p>
-<p><strong>1.</strong> If you haven&#8217;t already downloaded and installed <a class="reference external" href="https://filezilla-project.org/">FileZilla,</a>, please do so. We want to download the <strong>FileZilla Client</strong> and <em>not</em> the server version.</p>
+<p><strong>1.</strong> If you haven&#8217;t already downloaded and installed <a class="reference external" href="https://filezilla-project.org/">FileZilla</a>, please do so. We want to download the <strong>FileZilla Client</strong> and <em>not</em> the server version.</p>
 <p><strong>2.</strong> Open the application and then we will need to input a few things to get connected to the MSU HPCC.</p>
 <blockquote>
 <div><ul class="simple">
@@ -206,7 +206,7 @@
 <img alt="Transfer files from local host to HPCC with FileZilla" class="align-center" src="_images/filezillaclient.jpg" />
 </div>
 <div class="section" id="trimmomatic">
-<span id="id3"></span><h2>Trimmomatic<a class="headerlink" href="#trimmomatic" title="Permalink to this headline">¶</a></h2>
+<span id="dtwotrim"></span><h2>Trimmomatic<a class="headerlink" href="#trimmomatic" title="Permalink to this headline">¶</a></h2>
 <p>Trimmomatic is a lightweight java application that can remove Illumina adapter sequences and low quality reads. It uses a sliding window to analyze chunks of each read, examining the quality score, minimum read length, if it corresponds to an adapter sequence, etc. Let&#8217;s have a look at the <a class="reference external" href="http://www.usadellab.org/cms/index.php?page=trimmomatic">documentation</a> to see what each option does.</p>
 <p>To run this application, you have to run it from the command line (e.g. the terminal). If you are a Windows user, you might find it easier to use the Powershell instead of the default command line. To see if you have Powershell, search your computer for it. It recognizes most of the commands listed above whereas the normal Windows terminal does not.</p>
 <p><strong>1.</strong> Navigate to your desktop by typing: <strong>cd ~/Desktop</strong> and hit the Enter/Return key. This should bring you to your desktop directory.</p>
@@ -259,7 +259,7 @@ TrimmomaticSE: Completed successfully</p>
                         title="previous chapter">Install software and make sure everyone is on the same page</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="daythree.html"
-                        title="next chapter">Align sequences with Bowtie and FastQC primer for alignment quality assessment</a></p>
+                        title="next chapter">Align sequences with Bowtie and FastQC for alignment quality assessment</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -291,7 +291,7 @@ TrimmomaticSE: Completed successfully</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="daythree.html" title="Align sequences with Bowtie and FastQC primer for alignment quality assessment"
+          <a href="daythree.html" title="Align sequences with Bowtie and FastQC for alignment quality assessment"
              >next</a> |</li>
         <li class="right" >
           <a href="dayone.html" title="Install software and make sure everyone is on the same page"
