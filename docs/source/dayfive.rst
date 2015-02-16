@@ -210,10 +210,10 @@ Now, assuming everything has passed the MDS plot. Let's move on to the different
 1. Let's estimate the dispersion (variance):
 
 	* **Type:** y <- estimateCommonDisp(y, verbose=TRUE)
-	
-.. note:: An average BCV (biological coefficient of variation) for isogenic organisms in a lab setting (like what we are doing here) should be about 10-15%
 
 	* **Type:** y <- estimateTagwiseDisp(y)
+	
+.. note:: An average BCV (biological coefficient of variation) for isogenic organisms in a lab setting (like what we are doing here) should be about 10-15%
 	
 2. We can plot the dispersion:
 
@@ -240,15 +240,15 @@ Now, assuming everything has passed the MDS plot. Let's move on to the different
 7. Let's export everything to the desktop:
 
 	* **Type:** write.csv(cpmres, file='~/Desktop/cpmresults.csv')
-	
-.. note:: I would change the 'cpmresults.csv' file name to something more meaningful related to your sample comparison.
 
 	* **Type:** write.csv(res$table, file='~/Desktop/DEresults.csv')
-	
-.. note:: Change the 'DEresults.csv' file name to something more meaningful related to your sample comparison.
 
 	* **Type:** write.csv(fdr, file='~/Desktop/fdrcorrection.csv')
 	
+.. note:: Change the 'cpmresults.csv' file name to something more meaningful related to your sample comparison.
+
+.. note:: Change the 'DEresults.csv' file name to something more meaningful related to your sample comparison.
+
 .. note:: Change the 'fdrcorrection.csv' file name to something more meaningful related to your sample comparison.
 
 .. _plotres:
@@ -266,5 +266,5 @@ To generate the plot:
 	
 Now marvel at your beautiful plot! Show your neighbor and be proud, you've navigated RNA-seq analysis successfully!
 
-**The final steps will be to take the three files you exported and put them together into a single Excel file, filter for genes with an adjusted p-value(FDR) < 0.05, and then filter genes that have two-fold differential expression (the logFC stands for logFoldChange, where it is log base 2; up two-fold is logFC=1, down two-fold is logFC=-1).
+**The final steps will be to take the three files you exported and put them together into a single Excel file, filter for genes with an adjusted p-value(FDR) < 0.05, and then filter genes that have two-fold differential expression (the logFC stands for logFoldChange, where it is log base 2; up two-fold is logFC=1, down two-fold is logFC=-1).**
 
