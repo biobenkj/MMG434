@@ -6,7 +6,7 @@ Contents:
 .. toctree::
    :hidden:
 
-   dayone
+   dayonemod
    daytwo
    daythree
    dayfour
@@ -16,7 +16,7 @@ Contents:
    :header: "Day", "Module"
    :widths: 4, 60
 
-   "Wed 02/25", :doc:`dayone`
+   "Wed 02/25", :doc:`dayonemod`
    "Fri 02/27", :doc:`daytwo`
    "Mon 03/02", :doc:`daythree`
    "Wed 03/04", :doc:`dayfour`
