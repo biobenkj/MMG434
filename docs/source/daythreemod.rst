@@ -43,6 +43,7 @@ Once we get our data from the RTSF, we will download the *L. reuteri* JCM1112 :d
 To run Bowtie, we have to do a couple things. First, we need to build the index from the reference genome (trimmedMtbCDC1551.fa). To do that, copy and paste these commands into your terminal and hit Enter/Return::
 
     cd ~/RNAseq/Bowtie
+    module load bowtie
     bowtie-build /mnt/research/mmg434/ExampleRNAseqData/trimmedMtbCDC1551.fa trimmedCDC1551
     
 So let's break down what we just did:
