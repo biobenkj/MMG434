@@ -81,6 +81,9 @@ The document will look something like this (take a minute and read through it):
 
 .. _dthtseq:
 
+HTSeq
+-----
+
 This step will take the longest time, computationally, out of the entire workflow. 
 
 `HTSeq <http://www-huber.embl.de/users/anders/HTSeq/doc/overview.html>`_ is a powerful Python package for analyzing NGS data. For our purposes, we will be using the counting feature of HTSeq. Let's have a look at the way HTSeq can `count whether a read maps to a gene <http://www-huber.embl.de/users/anders/HTSeq/doc/count.html#count>`_.
