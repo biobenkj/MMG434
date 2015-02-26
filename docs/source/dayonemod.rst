@@ -111,7 +111,9 @@ The last piece of software that is nice to have is a software suite that works w
 	
 7. Type **optparse** into the **Packages (separate multiple with space or comma):** field. Then click **Install**. RStudio should do the rest.
 
-8. To install the packages from Bioconductor, click next to the **>** cursor. Type **source("http://bioconductor.org/biocLite.R")** and hit Enter/Return.
+8. To install the packages from Bioconductor, click next to the **>** cursor. Copy and paste this command next to the **>** and hit Enter/Return::
+
+    source("http://bioconductor.org/biocLite.R")
 
 .. image:: biocinstaller.jpg
 	:align: center
