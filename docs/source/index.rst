@@ -7,7 +7,7 @@ Contents:
    :hidden:
 
    dayonemod
-   daytwo
+   daytwomod
    daythree
    dayfour
    dayfive
@@ -16,8 +16,8 @@ Contents:
    :header: "Day", "Module"
    :widths: 4, 60
 
-   "Wed 02/25", :doc:`dayonemod`
-   "Fri 02/27", :doc:`daytwo`
+   "Fri 02/27", :doc:`dayonemod`
+   "Fri 02/27", :doc:`daytwomod`
    "Mon 03/02", :doc:`daythree`
    "Wed 03/04", :doc:`dayfour`
    "Fri 03/06", :doc:`dayfive`

@@ -1,7 +1,7 @@
 .. _dayonemod:
 
-Install software and make sure everyone is on the same page
-===========================================================
+Install software and using FileZilla to transfer files
+======================================================
 
 Before moving forward to mapping reads to the genome, it is necessary to QC the reads and remove low quality reads and adapter sequences. Since most of you are familiar with Trimmomatic and FastQC on the HPCC from MMG 433, we will do all the analysis there instead of on your own local machine. Further we need the ability to perform differential gene expression between conditions. We have chosen to do this through several software packages. Below are some instructions on how to install them.
 
@@ -13,6 +13,11 @@ Software to install:
 #. :ref:`rstudio`
 
 #. :ref:`qualimap`
+
+Using FileZilla to transfer files:
+----------------------------------
+
+#. :ref:`fz`
 
 
 .. _r:
@@ -115,3 +120,26 @@ The last piece of software that is nice to have is a software suite that works w
 9. Then type **biocLite("NOISeq")** and hit Enter/Return. Repeat for Repitools, Rsamtools, GenomicFeatures, and rtracklayer.
 
 10. That's all the software we need to install for now!
+
+.. _fz:
+
+Transferring files from your machine to the HPCC using FileZilla
+----------------------------------------------------------------
+
+**1.** If you haven't already downloaded and installed `FileZilla <https://filezilla-project.org/>`_, please do so. We want to download the **FileZilla Client** and *not* the server version.
+
+**2.** Open the application and then we will need to input a few things to get connected to the MSU HPCC. 
+
+	* Host: hpcc.msu.edu
+	* Username: Your MSU NetID
+	* Password: Your MSU NetID password
+	* Port: 22
+	* Click **Quickconnect**
+	
+**3.** Now that you are connected, you can move files from your computer (red circle) to the MSU HPCC (green circle) and vice versa, simply by double clicking the file. The connection closes if you exit out of the application.
+
+.. image:: filezillaclient.jpg
+	:align: center
+	:alt: Transfer files from local host to HPCC with FileZilla
+	
+**Let's get to work!**
