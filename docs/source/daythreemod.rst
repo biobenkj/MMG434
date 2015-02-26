@@ -76,39 +76,6 @@ The document will look something like this (take a minute and read through it):
 
 .. literalinclude:: trimmedbowtie.qsub
 
-The parts that you will want to change is the line that **starts with the word "time"**. In this line, we are doing several things:
-
-#. We are initiating Bowtie with the command **bowtie**
-
-#. We are asking Bowtie to output the alignment results as *.sam* files by raising the **-S** flag
-
-#. We are telling Bowtie to use 8 processors by raising the **-p** flag and specifying the number **7**
-
-#. We are telling Bowtie to use the *indexed genome* that was built earlier in the code by specifying **trimmedlreuterijcm1112**
-
-#. The input is specified by giving the **trimmedLRWT1.fastq**
-
-#. We are telling Bowtie to output the data with the **>** and write it to a file called **alignLRWT1.sam**
-
-You will need to change the filenames as identified in **5** and **6** to your appropriate sample file name. Once this is done, save the file and then upload it and the genome file (**trimmedlreuterijcm1112.fa**) to the **RNAseq** folder on the HPCC using FileZilla.
-
-Once you have completed this task, please place a green sticky note on your computer. If you are having any issues, please put a red sticky note on your computer and I will come help you.
-
-**Submitting the job to the HPCC**
-
-Now we will use the job submission script you just edited to submit the Bowtie job.
-
-#. Log in to the HPCC (if you aren't sure how to do this, refer to :doc:`daytwo`.)
-
-#. Load the *powertools* module (if you aren't sure how to do this, refer back to the commands listed in :doc:`daytwo`.)
-
-#. Log in to the intel10 compute node by typing: **intel10** and then hit Enter/Return
-
-#. Submit the job by navigating to your RNAseq folder and then typing: **qsub trimmedbowtie.qsub** and then hit Enter/Return
-
-.. note:: **BEFORE** you submit the job, make sure you are 1) in the RNAseq folder and 2) the sequence file, the .qsub file, and genome (.fa) file are all there.
-
-.. note:: To check the status of your job, simply type: **sj** (short for "show job") and hit Enter/Return. This command is *only* possible though if you have the **powertools** module loaded.
 
 **Questions!**
 
@@ -124,42 +91,28 @@ We need to supply htseq-count with a couple things:
 
 #. The *.sam* file that was output from Bowtie
 
-To use htseq-count on the HPCC, we have to edit :download:`another job submission script <alignhtseq.qsub>`, which will look something like this:
+To do the counting, copy and paste these commands into your terminal and hit Enter/Return::
+
+    module load htseq
+    cd ~/RNAseq/HTSeq
+    htseq-count -m intersection-nonempty --stranded=yes ~/RNAseq/Bowtie/aligngly7a.sam /mnt/research/mmg434/ExampleRNAseqData/alignMtbCDC1551.gtf > gly7amap.sam
+    
+You likely have an idea by now what the first two commands are doing, but let's talk briefly about the htseq-count command:
+
+#. htseq-count - This is calling the counting functionality of HTSeq.
+
+#. -m intersection-nonempty - This is telling HTSeq how we want to determine what is or is not a gene feature.
+
+#. --stranded=yes - This is telling HTSeq whether or not our data has strand specific information.
+
+#. ~/RNAseq/Bowtie/aligngly7a.sam /mnt/research/mmg434/ExampleRNAseqData/alignMtbCDC1551.gtf > gly7amap.sam - This is saying where the aligned sequence file is, where the genome feature file (.gtf) and write the counts to the file gly7amap.sam
+
+.. note:: It is **very** important that you end the output file with *.sam*.
+
+Work with a neighbor and see if you can perform the counting on the second file (aligngly7b.sam). If you have trouble, put up a red sticky. If all is fantastic, put up a green sticky.
+
+To use htseq-count on the HPCC once we have the full read set from the *L. reuteri* samples, we will have to edit a job submission script, which will look something like this:
 
 .. literalinclude:: alignhtseq.qsub
 
-Thus, please download and open it in a text editor (e.g. TextEdit or Notepad; **not Microsoft Word**).
-
-The part that you will want to change is the line that **starts with the word "htseq-count"**. In this line, we are doing several things:
-
-#. We are calling **htseq-count**
-
-#. Specifying which mode we want to use for HTSeq to count a read mapping to a gene with the **-m intersection-nonempty**
-
-#. Stating that the information it can expect is the reverse strand information with **--stranded=reverse** (this comes from the kit used to prepare the libraries)
-
-#. Providing the *.sam* input (please change this file name to your appropriate sample name)
-
-#. Providing the **GTF** file
-
-#. We are telling HTSeq to output the data with the **>** and write it to a file called **LRWT1map.sam** (please change this output file name to your appropriate sample name and making sure it ends in *map.sam* like the example)
-
-**Submitting the job to the HPCC**
-
-Now we will use the job submission script you just edited to submit the HTSeq job.
-
-#. Log in to the HPCC (if you aren't sure how to do this, refer to :doc:`daytwo`.)
-
-#. Load the *powertools* module (if you aren't sure how to do this, refer back to the commands listed in :doc:`daytwo`.)
-
-#. Log in to the intel10 compute node by typing: **intel10** and then hit Enter/Return
-
-#. Edit the name of the folder that your Bowtie job put all the output in to **Bowtie** (e.g. Type: mv BowtieJobOutputLongListOfNumbers Bowtie) - tab auto-complete helps here :)
-
-#. Submit the job by navigating to your RNAseq folder and then the Bowtie folder you just renamed and typing: **qsub alignhtseq.qsub** and then hit Enter/Return
-
-.. note:: **BEFORE** you submit the job, make sure you are 1) in the Bowtie folder and 2) the *.sam* file, the .qsub file, and feature file (.gtf) file are all there.
-
-.. note:: To check the status of your job, simply type: **sj** (short for "show job") and hit Enter/Return. This command is *only* possible though if you have the **powertools** module loaded.
-
-**Questions! We have about an hour for this to run, so now might be a good time to start writing up your report on the progress you've made so far.**
+**Questions! Otherwise, that is all for now!**
