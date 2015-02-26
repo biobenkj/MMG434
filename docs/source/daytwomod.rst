@@ -3,8 +3,6 @@
 RNA-seq background information, basic Linux/Unix commands, Trimmomatic, and FastQC
 ==================================================================================
 
-Let's start with downloading the data! This is going to take a *long* time, so we should start here. We will need to navigate to the `FTP server <ftp://username:password@titan.bch.msu.edu>`_. I would recommend plugging into the ethernet and make sure you have at least 10 GB of space on your computer. Initiate the download by right clicking on a sample and clicking on "Save As". Save this file to your Desktop. Eventually we are going to rename this file after we have a refresher on basic Linux/Unix commands.
-
 Before we dig into the data and begin trimming and aligning the reads to the genome, I think it is useful to understand what happens *after you submit your RNA to the sequencing facility*. This sort of knowledge can be very useful in understanding what could potentially provide bias and any number of issues to the end dataset. In this session we will cover several things including: 
 
 #. :ref:`rnaseqbackground`
@@ -181,7 +179,7 @@ There are multiple ways with which you can access the HPCC and transfer files to
 
 **3.** To **log out**, type: **exit**.
 
-Great! Now that we are logged onto the HPCC and created the RNAseq folder, let's grab the data. To do this, copy and paste these commands into your terminal and then hit Enter/Return::
+Great! Now that we are logged onto the HPCC and created the RNAseq folder, let's grab the data. To do this, copy and paste these commands into your terminal and then hit Enter/Return (Mac users can use Command+C to copy and paste; Windows (PuTTY) users can use Ctrl+C to copy and then right mouse click to paste into the terminal::
 
     module load powertools
     intel14

@@ -1,7 +1,7 @@
 .. _dayonemod:
 
-Install software and using FileZilla to transfer files
-======================================================
+Install software and use FileZilla to transfer files
+====================================================
 
 Before moving forward to mapping reads to the genome, it is necessary to QC the reads and remove low quality reads and adapter sequences. Since most of you are familiar with Trimmomatic and FastQC on the HPCC from MMG 433, we will do all the analysis there instead of on your own local machine. Further we need the ability to perform differential gene expression between conditions. We have chosen to do this through several software packages. Below are some instructions on how to install them.
 
@@ -117,7 +117,7 @@ The last piece of software that is nice to have is a software suite that works w
 	:align: center
 	:alt: BiocLite installer
 
-9. Then type **biocLite("NOISeq")** and hit Enter/Return. Repeat for Repitools, Rsamtools, GenomicFeatures, and rtracklayer.
+9. Then click next to the **>** cursor and type **biocLite("NOISeq")** and hit Enter/Return. Repeat for Repitools, Rsamtools, GenomicFeatures, and rtracklayer.
 
 10. That's all the software we need to install for now!
 
@@ -136,7 +136,7 @@ Transferring files from your machine to the HPCC using FileZilla
 	* Port: 22
 	* Click **Quickconnect**
 	
-**3.** Now that you are connected, you can move files from your computer (red circle) to the MSU HPCC (green circle) and vice versa, simply by double clicking the file. The connection closes if you exit out of the application.
+**3.** Now that you are connected, you can move files from your computer (red circle) to the MSU HPCC (green circle) and vice versa, simply by double clicking the file. You can navigate through the folders on your machine and the HPCC just like you would when browsing for documents on your own computer. The connection closes if you exit out of the application.
 
 .. image:: filezillaclient.jpg
 	:align: center
