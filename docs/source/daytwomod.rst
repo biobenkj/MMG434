@@ -179,7 +179,7 @@ There are multiple ways with which you can access the HPCC and transfer files to
 
 **3.** To **log out**, type: **exit**.
 
-Great! Now that we are logged onto the HPCC and created the RNAseq folder, let's grab the data. To do this, copy and paste these commands into your terminal and then hit Enter/Return (Mac users can use Command+C to copy and paste; Windows (PuTTY) users can use Ctrl+C to copy and then right mouse click to paste into the terminal::
+Great! Now that we are logged onto the HPCC and created the RNAseq folder, let's grab the data. To do this, copy and paste these commands into your terminal and then hit Enter/Return (Mac users can use Command+C to copy and Command+V to paste; Windows (PuTTY) users can use Ctrl+C to copy and then right mouse click to paste into the terminal::
 
     module load powertools
     intel14
