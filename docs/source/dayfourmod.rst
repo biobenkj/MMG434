@@ -60,6 +60,7 @@ To run the script::
 
     module load powertools
     intel14-phi
+    module load powertools
     cd ~
     qsub LreuteriAnalysisScript.sh
     
