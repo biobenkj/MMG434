@@ -18,6 +18,7 @@ Contents:
    "Fri 02/27", :doc:`dayonemod`
    "Fri 02/27", :doc:`daytwomod`
    "Mon 03/02", :doc:`daythreemod`
+   "Wed 03/04", :doc:`dayfourmod`
 
 .. toctree::
    :maxdepth: 2
