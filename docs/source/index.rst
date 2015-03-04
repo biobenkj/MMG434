@@ -9,6 +9,7 @@ Contents:
    dayonemod
    daytwomod
    daythreemod
+   dayfourmod
 
 .. csv-table:: **RNA-seq module outline**
    :header: "Day", "Module"
