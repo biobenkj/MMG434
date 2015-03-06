@@ -1,9 +1,9 @@
-.. _dayfive:
+.. _dayfivemod:
 
 Differential gene expression analysis with edgeR
 ================================================
 
-Up to this point we have done several things: trimmed, aligned, and counted reads that mapped to each gene. Now, we will finally move to the step where we will analyze the differential gene expression between the untreated and treated *L. reuteri* samples!
+Up to this point we have done several things: trimmed, QC'd, aligned, and counted reads that mapped to each gene. Now, we will finally move to the step where we will analyze the differential gene expression between the untreated and treated *L. reuteri* samples!
 
 To do this, we have chosen to utilize an analysis package written in the R programming language called `edgeR <http://bioconductor.org/packages/release/bioc/vignettes/edgeR/inst/doc/edgeRUsersGuide.pdf>`_. edgeR stands for differential expression analysis of digital gene expression data in R. This is a fantastic tool that is actively maintained (as seen by the date of the most recent user guide update) and fairly easy to use. Several diagnostic plots are produced throughout the analysis that provide meaningful information as to whether we can even perform differential gene expression between samples and if there are batch effects we have to deal with.
 
@@ -55,49 +55,53 @@ Read in the data to RStudio
 
 The next step is to read in the data to RStudio.
 
-1. We are going to download the data from this site, as I've collated the data together for you from the HPCC. Please download all of the control samples and pick a treatment, and download all of those files to your desktop.
+1. We are going to download the data from the HPCC. Please download the map.sam files from the HTSeq directory to your desktop using FileZilla or WinSCP.
 
-	* **LB controls**
-	* :download:`LRWT1map.sam <LRWT1map.sam>`
-	* :download:`LRWT2map.sam <LRWT2map.sam>`
-	* :download:`LRWT3map.sam <LRWT3map.sam>`
-	* :download:`LRWT4map.sam <LRWT4map.sam>`
+.. note:: We are going to need to edit each of these text files to remove the last five lines that will otherwise mess up the differential gene expression analysis.
 
-	* **Indole treated**
-	* :download:`LRindole1map.sam <LRindole1map.sam>`
-	* :download:`LRindole2map.sam <LRindole2map.sam>`
-	* :download:`LRindole3map.sam <LRindole3map.sam>`
-	* :download:`LRindole4map.sam <LRindole4map.sam>`
-	* :download:`LRindole5map.sam <LRindole5map.sam>`
-	* :download:`LRindole6map.sam <LRindole6map.sam>`
+	1a. To do this, open the file in a text editor like TextEdit on Mac or Notepad on Windows.
+	1b. Scroll to the bottom of the file
+	1c. Remove the lines seen below in the screenshot.
 
-	* **Commensal E.coli conditioned medium treated**
-	* :download:`LRcomm1map.sam <LRcomm1map.sam>`
-	* :download:`LRcomm2map.sam <LRcomm2map.sam>`
-	* :download:`LRcomm3map.sam <LRcomm3map.sam>`
-	* :download:`LRcomm4map.sam <LRcomm4map.sam>`
-	* :download:`LRcomm5map.sam <LRcomm5map.sam>`
-	* :download:`LRcomm6map.sam <LRcomm6map.sam>`
-	* :download:`LRcomm7map.sam <LRcomm7map.sam>`
+.. image:: lastfivelines.jpg
+	:align: center
+	:alt: HPCC log in screen
 
-	* **EHEC conditioned medium treated**
-	* :download:`LRehec1map.sam <LRehec1map.sam>`
-	* :download:`LRehec2map.sam <LRehec2map.sam>`
-	* :download:`LRehec3map.sam <LRehec3map.sam>`
-	* :download:`LRehec4map.sam <LRehec4map.sam>`
-	* :download:`LRehec5map.sam <LRehec5map.sam>`
-	* :download:`LRehec6map.sam <LRehec6map.sam>`
-	* :download:`LRehec7map.sam <LRehec7map.sam>`
+	1d. We also need to remove all the lines in the file that correspond to tRNA and rRNA.
+	1e. Teaching time: Didn't we remove all of the rRNA *before* we made the libraries for sequencing?! Guess we got most but not all...
+
+.. note:: It is absolutely essential that we get rid of any line spaces at the bottom and between lines (e.g. after we get rid of the 16s rRNA lines). When you load it into Rstudio (next step), make sure you have exactly "1820 obs. of 1 variable". 
 
 2. Now, we need to read the files into RStudio. To do this we need to create a variable for each file. I will give an example for each treatment that you should be able to copy and paste into RStudio.
 
-	* **For LB control:** wt1 = read.table("~/Desktop/LRWT1map.sam", row.names=1)
+**Mac users:**
+	
+	* **For LB control:** wt1 = read.table("~/Desktop/mapLRLB1.sam", row.names=1)
 
-	* **For indole treated:** in1 = read.table("~/Desktop/LRindole1map.sam", row.names=1)
+	* **For indole treated:** in1 = read.table("~/Desktop/mapLRindole1.sam", row.names=1)
 
-	* **For E. coli commensal medium treated:** co1 = read.table("~/Desktop/LRcomm1map.sam", row.names=1)
+	* **For E. coli commensal medium treated:** co1 = read.table("~/Desktop/mapLRcomm1.sam", row.names=1)
 
-	* **For EHEC medium treated:** eh1 = read.table("~/Desktop/LRehec1map.sam", row.names=1)
+	* **For EHEC medium treated:** eh1 = read.table("~/Desktop/mapLRehec1.sam", row.names=1)
+	
+.. note:: Check to make sure you have "1820 obs. of 1 variable" by looking in the upper righthand corner of Rstudio (e.g. the Environment/Global Environment window).
+	
+**Windows users:**
+
+	This is only slightly more complicated for you. It's the same idea and naming convention, but we are going to use the Tab autocomplete function to help us determine the file path to the Desktop.
+	To do this we are going to break the steps down using the LB control as an example:
+	
+	#. Start typing in the command and place the cursor between the quotes so it looks like this (don't just copy and paste this in, type it out): wt1 = read.table("")
+	
+	#. Next, inside the quotes, type: /Users/ and then hit the Tab key once. This will present you with a list of potential paths forward. The one you want will usually resemble your user name for the account on your computer (typically the first or second one, NOT "All users"). Click on the one that resembles your user name.
+	
+	#. Your command should now look something like this: wt1 = read.table("/Users/yourusername/")
+	
+	#. Next, you can complete the file path and will look something like this: wt1 = read.table("/Users/yourusername/Desktop/mapLRLB1.sam")
+	
+	#. Finally, we can complete the command: wt1 = read.table("/Users/yourusername/Desktop/mapLRLB1.sam", row.names=1)
+	
+.. note:: Check to make sure you have "1820 obs. of 1 variable" by looking in the upper righthand corner of Rstudio (e.g. the Environment/Global Environment window).
 
 3. Repeat each of these commands for the respective treatment, making sure to change the variable name (e.g. wt1, in1, co1, eh1) each time (e.g. wt2 for LRWT2map.sam).
 

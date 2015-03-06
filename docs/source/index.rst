@@ -11,6 +11,7 @@ Contents:
    daythreemod
    dayfourmod
    broken
+   dayfivemod
 
 .. csv-table:: **RNA-seq module outline**
    :header: "Day", "Module"
@@ -21,6 +22,7 @@ Contents:
    "Mon 03/02", :doc:`daythreemod`
    "Wed 03/04", :doc:`dayfourmod`
    "Wed 03/04", :doc:`broken`
+   "Fri 03/05", :doc:`dayfivemod`
    
 .. toctree::
    :maxdepth: 2
