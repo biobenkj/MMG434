@@ -59,16 +59,19 @@ The next step is to read in the data to RStudio.
 
 .. note:: We are going to need to edit each of these text files to remove the last five lines that will otherwise mess up the differential gene expression analysis.
 
-	1a. To do this, open the file in a text editor like TextEdit on Mac or Notepad on Windows.
-	1b. Scroll to the bottom of the file
-	1c. Remove the lines seen below in the screenshot.
+1a. To do this, open the file in a text editor like TextEdit on Mac or Notepad on Windows.
+
+1b. Scroll to the bottom of the file
+
+1c. Remove the lines seen below in the screenshot.
 
 .. image:: lastfivelines.jpg
 	:align: center
 	:alt: HPCC log in screen
 
-	1d. We also need to remove all the lines in the file that correspond to tRNA and rRNA.
-	1e. Teaching time: Didn't we remove all of the rRNA *before* we made the libraries for sequencing?! Guess we got most but not all...
+1d. We also need to remove all the lines in the file that correspond to tRNA and rRNA.
+
+1e. Teaching time: Didn't we remove all of the rRNA *before* we made the libraries for sequencing?! Guess we got most but not all...
 
 .. note:: It is absolutely essential that we get rid of any line spaces at the bottom and between lines (e.g. after we get rid of the 16s rRNA lines). When you load it into Rstudio (next step), make sure you have exactly "1820 obs. of 1 variable". 
 
