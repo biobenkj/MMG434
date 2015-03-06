@@ -55,6 +55,31 @@ Read in the data to RStudio
 
 The next step is to read in the data to RStudio.
 
+**IMPORTANT**
+If you did *not* get your job to complete by now, please copy and paste the appropriate commands into your terminal on the HPCC to copy the necessary files into a folder called LreuteriData in your home directory
+
+If you are in the LB vs Commensal group::
+
+    cd ~
+    mkdir LreuteriData
+    cd ~/LreuteriData
+    cp /mnt/research/mmg434/LreuteriRNAseqData/AnalyzedLBvsComm/*.sam ~/LreuteriData
+    
+If you are in the LB vs EHEC group::
+
+    cd ~
+    mkdir LreuteriData
+    cd ~/LreuteriData
+    cp /mnt/research/mmg434/LreuteriRNAseqData/AnalyzedLBvsEHEC/*.sam ~/LreuteriData
+    
+If you are in the LB vs Indole group::
+
+    cd ~
+    mkdir LreuteriData
+    cd ~/LreuteriData
+    cp /mnt/research/mmg434/LreuteriRNAseqData/AnalyzedLBvsIndole/*.sam ~/LreuteriData
+    
+
 1. We are going to download the data from the HPCC. Please download the map.sam files from the HTSeq directory to your desktop using FileZilla or WinSCP.
 
 .. note:: We are going to need to edit each of these text files to remove the last five lines that will otherwise mess up the differential gene expression analysis.
