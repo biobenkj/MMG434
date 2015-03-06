@@ -63,7 +63,7 @@ The next step is to read in the data to RStudio.
 
 1b. Scroll to the bottom of the file
 
-1c. Remove the lines seen below in the screenshot.
+1c. Remove the lines seen below in the screenshot starting at "__no_feature".
 
 .. image:: lastfivelines.jpg
 	:align: center
